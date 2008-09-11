@@ -39,9 +39,6 @@ public class TriStateFocusPainter implements Painter<Component> {
 
     public void paint(Graphics2D g, Component component, int width, int height) {
         Painter<Component> painterToUse;
-//        =
-//                WindowUtils.isParentWindowFocused(component)
-//                ? fComponentFocusedPainter : fWindowUnfocusedPainter;
 
         if (component.hasFocus()) {
             painterToUse = fComponentFocusedPainter;

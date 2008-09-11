@@ -91,6 +91,6 @@ public class MacColorUtils {
             new Color(0xcfcfcf);
 
     public static final Color OS_X_BOTTOM_BAR_BORDER_HIGHLIGHT_COLOR =
-            new Color(0xd8d8d8);
+            new Color(255,255,255,110);
 
 }

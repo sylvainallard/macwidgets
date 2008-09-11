@@ -1,9 +1,11 @@
 package com.explodingpixels.macwidgets;
 
+import com.explodingpixels.widgets.WindowDragger;
 import com.jgoodies.forms.builder.PanelBuilder;
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
-import com.explodingpixels.widgets.WindowDragger;
+import org.jdesktop.swingx.JXPanel;
+import org.jdesktop.swingx.painter.Painter;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -11,11 +13,18 @@ import javax.swing.BorderFactory;
 import java.awt.Window;
 import java.awt.Color;
 
-import org.jdesktop.swingx.JXPanel;
-import org.jdesktop.swingx.painter.Painter;
-
 /**
- * A component that has three areas in which it can add widgets.
+ * A component that has three areas in which it widgets can be added. This is the component behind
+ * the Unfied Tool Bar and the Bottom Bar. Here's what a {@code TriAreaComponent} Unified Tool Bar
+ * looks like with widgets added to each of the three areas:
+ * <br>
+ * <img src="../../../resources/UnifiedToolBar.png">
+ * <br>
+ * You cannot directly create a {@code TriAreaComponent} and should instead use the factory
+ * methods provided in {@link MacWidgetFactory}.
+ * 
+ * @see MacWidgetFactory#createBottomBar(BottomBarSize)
+ * @see MacWidgetFactory#createUnifiedToolBar()
  */
 public class TriAreaComponent {
 
@@ -70,6 +79,10 @@ public class TriAreaComponent {
 //        fRightPanelBuilder.getPanel().setBorder(BorderFactory.createLineBorder(Color.GREEN));
     }
 
+    void forceAreasToHaveTheSameWidth() {
+        ((FormLayout)fPanel.getLayout()).setColumnGroups(new int[][]{{1,2,3}});        
+    }
+
     public JComponent getComponent() {
         return fPanel;
     }
@@ -113,10 +126,19 @@ public class TriAreaComponent {
 
 
     public void addComponentToRight(JComponent toolToAdd) {
+        addComponentToRight(toolToAdd, fSpacer_pixels);
+    }
+
+    public void addComponentToRight(JComponent toolToAdd, int spacer_pixels) {
         fRightPanelBuilder.appendColumn("p");
         fRightPanelBuilder.add(toolToAdd);
         fRightPanelBuilder.nextColumn();
-        // TODO add spacer
+
+        if (getCenterComponentCount() > 0) {
+            fRightPanelBuilder.appendColumn("p");
+            fRightPanelBuilder.add(MacWidgetFactory.createSpacer(spacer_pixels,0));
+            fRightPanelBuilder.nextColumn();
+        }
     }
 
     void setBackgroundPainter(Painter backgroundPainter) {

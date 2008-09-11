@@ -2,14 +2,17 @@ package com.explodingpixels.macwidgets;
 
 import com.explodingpixels.border.FocusStateMatteBorder;
 import com.explodingpixels.macwidgets.plaf.EmphasizedLabelUI;
+import com.explodingpixels.painter.TriStateFocusPainter;
+import com.explodingpixels.painter.GradientPainter;
 import com.jgoodies.forms.factories.Borders;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicSplitPaneUI;
 import javax.swing.table.TableModel;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.awt.*;
+
+import org.jdesktop.swingx.painter.Painter;
 
 public class MacWidgetFactory {
 
@@ -41,7 +44,7 @@ public class MacWidgetFactory {
         return tabBar;
     }
 
-    public static void installUnifiedToolBarBorder(final JComponent component) {
+    private static void installUnifiedToolBarBorder(final JComponent component) {
 
         FocusStateMatteBorder border = new FocusStateMatteBorder(0,0,1,0,
                 MacColorUtils.OS_X_UNIFIED_TOOLBAR_FOCUSED_BOTTOM_COLOR,
@@ -56,8 +59,47 @@ public class MacWidgetFactory {
         return new ComponentBottomBar();
     }
 
-    public static BottomBar createBottomBar() {
-        return new BottomBar();
+    /**
+     * Creates a Mac style Bottom Bar. For a full descrption of what a Source List is, see the
+     * <a href="http://developer.apple.com/documentation/UserExperience/Conceptual/AppleHIGuidelines/XHIGWindows/chapter_18_section_4.html#//apple_ref/doc/uid/20000961-SW6">Bottom Bars</a>
+     * section of Apple's Human Interface Guidelines.
+     * @param size the size of the Bottom Bar.
+     * @return a {@link TriAreaComponent} configured as a Bottom Bar.
+     */
+    public static TriAreaComponent createBottomBar(BottomBarSize size) {
+
+        Painter<Component> focusedPainter =
+                new GradientPainter(
+                        MacColorUtils.OS_X_BOTTOM_BAR_ACTIVE_TOP_COLOR,
+                        MacColorUtils.OS_X_BOTTOM_BAR_ACTIVE_BOTTOM_COLOR);
+        Painter<Component> unfocusedPainter =
+                new GradientPainter(
+                        MacColorUtils.OS_X_BOTTOM_BAR_INACTIVE_TOP_COLOR,
+                        MacColorUtils.OS_X_BOTTOM_BAR_INACTIVE_BOTTOM_COLOR);
+
+        Painter<Component> painter = new TriStateFocusPainter(focusedPainter, focusedPainter,
+                unfocusedPainter);
+
+        final TriAreaComponent bottomBar = new TriAreaComponent(5);
+        bottomBar.forceAreasToHaveTheSameWidth();
+        bottomBar.setBackgroundPainter(painter);
+        bottomBar.getComponent().setPreferredSize(new Dimension(-1, size.getHeight()));
+
+        FocusStateMatteBorder outterBorder = new FocusStateMatteBorder(1,0,0,0,
+                MacColorUtils.OS_X_UNIFIED_TOOLBAR_FOCUSED_BOTTOM_COLOR,
+                MacColorUtils.OS_X_UNIFIED_TOOLBAR_UNFOCUSED_BORDER_COLOR,
+                bottomBar.getComponent());
+        Border innerBorder = BorderFactory.createMatteBorder(1,0,0,0,
+                MacColorUtils.OS_X_BOTTOM_BAR_BORDER_HIGHLIGHT_COLOR);
+        Border lineBorders = BorderFactory.createCompoundBorder(outterBorder, innerBorder);
+
+        int padding = size == BottomBarSize.SMALL ? 5 : 10;
+        padding = 5;
+        bottomBar.getComponent().setBorder(
+                BorderFactory.createCompoundBorder(lineBorders,
+                        BorderFactory.createEmptyBorder(0,padding,0,padding)));
+
+        return bottomBar;
     }
 
     public static LabeledComponentGroup createLabledComponentGroup(
@@ -80,14 +122,16 @@ public class MacWidgetFactory {
         return label;
     }
 
+    public static JLabel createEmphasizedLabel(String text) {
+        return makeEmphasizedLabel(new JLabel(text));
+    }
+
     public static JLabel makeEmphasizedLabel(JLabel label) {
         label.setUI(new EmphasizedLabelUI());
         return label;
     }
 
-    public static JLabel makeEmphasizedLabel(JLabel label,
-                                             Color focusedColor,
-                                             Color unfocusedColor,
+    public static JLabel makeEmphasizedLabel(JLabel label, Color focusedColor, Color unfocusedColor,
                                              Color emphasisColor) {
         label.setUI(new EmphasizedLabelUI(focusedColor, unfocusedColor, emphasisColor));
         return label;
