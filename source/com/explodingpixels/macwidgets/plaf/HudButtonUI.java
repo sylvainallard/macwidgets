@@ -13,6 +13,7 @@ import javax.swing.plaf.basic.BasicGraphicsUtils;
 
 import com.explodingpixels.macwidgets.WidgetBaseColors;
 import com.explodingpixels.macwidgets.plaf.HudPaintingUtils.Roundedness;
+import sun.swing.SwingUtilities2;
 
 /**
  * Creates a Heads Up Display (HUD) style button, similar to that seen in various iApps (e.g.
@@ -116,7 +117,7 @@ public class HudButtonUI extends BasicButtonUI {
 
         g.setColor(button.getForeground());
          	
-        BasicGraphicsUtils.drawStringUnderlineCharAt(g, text, mnemonicIndex,
+        SwingUtilities2.drawStringUnderlineCharAt(button, g, text, mnemonicIndex,
                 textRect.x + getTextShiftOffset(),
                 textRect.y + fontMetrics.getAscent() + getTextShiftOffset());
     }

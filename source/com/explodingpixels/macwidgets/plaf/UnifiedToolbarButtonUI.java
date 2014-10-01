@@ -12,12 +12,11 @@ import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonModel;
 import javax.swing.JComponent;
-import javax.swing.UIManager;
 import javax.swing.plaf.basic.BasicButtonUI;
-import javax.swing.plaf.basic.BasicGraphicsUtils;
 
 import com.explodingpixels.macwidgets.MacColorUtils;
 import com.explodingpixels.macwidgets.MacFontUtils;
+import sun.swing.SwingUtilities2;
 
 public class UnifiedToolbarButtonUI extends BasicButtonUI {
 
@@ -95,14 +94,14 @@ public class UnifiedToolbarButtonUI extends BasicButtonUI {
         graphics.setColor(model.isArmed()
                 ? MacColorUtils.EMPTY_COLOR
                 : EmphasizedLabelUI.DEFAULT_EMPHASIS_COLOR);
-        BasicGraphicsUtils.drawStringUnderlineCharAt(graphics, text, -1,
+        SwingUtilities2.drawStringUnderlineCharAt(c, graphics, text, -1,
                 textRect.x, textRect.y + 1 + fm.getAscent());
 
         // 2) Draw the text.
         graphics.setColor(model.isEnabled()
                 ? EmphasizedLabelUI.DEFAULT_FOCUSED_FONT_COLOR
                 : EmphasizedLabelUI.DEFAULT_DISABLED_FONT_COLOR);
-        BasicGraphicsUtils.drawStringUnderlineCharAt(graphics, text, -1,
+        SwingUtilities2.drawStringUnderlineCharAt(c, graphics, text, -1,
                 textRect.x, textRect.y + fm.getAscent());
 
         graphics.dispose();

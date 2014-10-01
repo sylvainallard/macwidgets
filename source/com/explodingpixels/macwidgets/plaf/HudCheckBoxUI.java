@@ -13,10 +13,10 @@ import javax.swing.ButtonModel;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.plaf.basic.BasicCheckBoxUI;
-import javax.swing.plaf.basic.BasicGraphicsUtils;
 
 import com.explodingpixels.macwidgets.MacFontUtils;
 import com.explodingpixels.macwidgets.WidgetBaseColors;
+import sun.swing.SwingUtilities2;
 
 /**
  * Creates a Heads Up Display (HUD) style check box button, similar to that seen in various iApps
@@ -69,7 +69,7 @@ public class HudCheckBoxUI extends BasicCheckBoxUI {
         int mnemonicIndex = button.getDisplayedMnemonicIndex();
 
         g.setColor(button.getForeground());
-        BasicGraphicsUtils.drawStringUnderlineCharAt(g, text, mnemonicIndex,
+        SwingUtilities2.drawStringUnderlineCharAt(c, g, text, mnemonicIndex,
                 textRect.x + getTextShiftOffset(),
                 textRect.y + fontMetrics.getAscent() + getTextShiftOffset());
     }

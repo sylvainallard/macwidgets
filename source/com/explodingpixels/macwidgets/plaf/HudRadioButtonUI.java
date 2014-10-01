@@ -12,11 +12,11 @@ import javax.swing.AbstractButton;
 import javax.swing.ButtonModel;
 import javax.swing.Icon;
 import javax.swing.JComponent;
-import javax.swing.plaf.basic.BasicGraphicsUtils;
 import javax.swing.plaf.basic.BasicRadioButtonUI;
 
 import com.explodingpixels.macwidgets.MacFontUtils;
 import com.explodingpixels.macwidgets.WidgetBaseColors;
+import sun.swing.SwingUtilities2;
 
 /**
  * Creates a Heads Up Display (HUD) style radio button, similar to that seen in various iApps
@@ -51,7 +51,7 @@ public class HudRadioButtonUI extends BasicRadioButtonUI {
         int mnemonicIndex = button.getDisplayedMnemonicIndex();
 
         g.setColor(button.getForeground());
-        BasicGraphicsUtils.drawStringUnderlineCharAt(g, text, mnemonicIndex,
+        SwingUtilities2.drawStringUnderlineCharAt(button, g, text, mnemonicIndex,
                 textRect.x + getTextShiftOffset(),
                 textRect.y + fontMetrics.getAscent() + getTextShiftOffset());
     }
