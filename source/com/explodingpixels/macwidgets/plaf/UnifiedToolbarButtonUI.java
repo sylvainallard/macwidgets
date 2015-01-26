@@ -16,12 +16,13 @@ import javax.swing.plaf.basic.BasicButtonUI;
 
 import com.explodingpixels.macwidgets.MacColorUtils;
 import com.explodingpixels.macwidgets.MacFontUtils;
+import javax.swing.Icon;
 import sun.swing.SwingUtilities2;
 
 public class UnifiedToolbarButtonUI extends BasicButtonUI {
 
     private static final Color PRESSED_BUTTON_MASK_COLOR = new Color(0, 0, 0, 128);
-
+    private Icon icoPressed, icoRollover, icoRollSel, icoSelected;
     private static final Color DISABLED_BUTTON_MASK_COLOR = new Color(255, 255, 255, 128);
 
     @Override
@@ -58,7 +59,17 @@ public class UnifiedToolbarButtonUI extends BasicButtonUI {
         // create a graphics context from the buffered image.
         Graphics2D graphics = (Graphics2D) image.getGraphics();
         // paint the icon into the buffered image.
-        b.getIcon().paintIcon(c, graphics, 0, 0);
+        if( icoPressed != null && model.isPressed() ) {
+            icoPressed.paintIcon(c, graphics, 0, 0);
+        } else if( icoRollSel != null && model.isRollover() && model.isSelected() ) {
+            icoRollSel.paintIcon(c, graphics, 0, 0);
+        } else if( icoRollover != null && model.isRollover() ) {
+            icoRollover.paintIcon(c, graphics, 0, 0);
+        } else if( icoSelected != null && model.isSelected() ) {
+            icoSelected.paintIcon(c, graphics, 0, 0);
+        } else {
+            b.getIcon().paintIcon(c, graphics, 0, 0);
+        }
 
         // set the composite on the graphics context to SrcAtop which blends the
         // source with the destination, and thus transparent pixels in the
@@ -105,5 +116,12 @@ public class UnifiedToolbarButtonUI extends BasicButtonUI {
                 textRect.x, textRect.y + fm.getAscent());
 
         graphics.dispose();
+    }
+    
+    public void setIcons( Icon icoPressed, Icon icoRollover, Icon icoRollSel, Icon icoSelected ) {
+        this.icoPressed = icoPressed;
+        this.icoRollover = icoRollover;
+        this.icoRollSel = icoRollSel;
+        this.icoSelected = icoSelected;
     }
 }
