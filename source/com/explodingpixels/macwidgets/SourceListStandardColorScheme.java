@@ -30,8 +30,8 @@ public class SourceListStandardColorScheme implements SourceListColorScheme {
     private static final MacWidgetsPainter<Component> INACTIVE_FOCUSED_SELECTION_PAINTER =
             createSourceListInactiveSelectionPainter();
 
-    private static Color ACTIVE_BACKGROUND_COLOR = new Color(0xd6dde5);
-    private static Color INACTIVE_BACKGROUND_COLOR = new Color(0xe8e8e8);
+    private static Color ACTIVE_BACKGROUND_COLOR = new Color(234,238,242);//Color(0xd6dde5);
+    private static Color INACTIVE_BACKGROUND_COLOR = new Color(248,248,248);//Color(0xe8e8e8);
 
     private static final Color CATEGORY_FONT_COLOR = new Color(0x606e80);
     private static final Color CATEGORY_FONT_SHADOW_COLOR = EmphasizedLabelUI.DEFAULT_EMPHASIS_COLOR;
@@ -40,8 +40,8 @@ public class SourceListStandardColorScheme implements SourceListColorScheme {
     private static final Color SELECTED_ITEM_FONT_SHADOW_COLOR = new Color(0, 0, 0, 110);
 
     private static Color BADGE_SELECTED_COLOR = Color.WHITE;
-    private static Color BADGE_ACTIVE_UNSELECTED_COLOR = new Color(0x8899bc);
-    private static Color BADGE_INACTIVE_UNSELECTED_COLOR = new Color(0x9a9a9a);
+    private static Color BADGE_ACTIVE_UNSELECTED_COLOR = new Color(94,94,94);//Color(0x8899bc);
+    private static Color BADGE_INACTIVE_UNSELECTED_COLOR = new Color(94,94,94);//Color(0x9a9a9a);
     private static Color BADGE_TEXT_COLOR = BADGE_SELECTED_COLOR;
 
     public static final Icon UNSELECTED_COLLAPSED_ICON = new ImageIcon(
@@ -133,23 +133,23 @@ public class SourceListStandardColorScheme implements SourceListColorScheme {
     }
 
     private static MacWidgetsPainter<Component> createSourceListActiveFocusedSelectionPainter() {
-        Color topLineColor = new Color(0x4580c8);
-        Color topColor = new Color(0x5d94d6);
-        Color bottomColor = new Color(0x1956ad);
+        Color topLineColor = new Color(17,133,247);//Color(0x4580c8);
+        Color topColor = new Color(17,133,247);//new Color(0x5d94d6);
+        Color bottomColor = new Color(17,133,247);//new Color(0x1956ad);
         return new GradientWithBorderPainter(topLineColor, bottomColor, topColor, bottomColor);
     }
 
     private static MacWidgetsPainter<Component> createSourceListActiveUnfocusedSelectionPainter() {
-        Color topLineColor = new Color(0x91a0c0);
-        Color topColor = new Color(0xa1b0cf);
-        Color bottomColor = new Color(0x7185ab);
+        Color topLineColor = new Color(140,139,140);//Color(0x91a0c0);
+        Color topColor = new Color(140,139,140);//Color(0xa1b0cf);
+        Color bottomColor = new Color(140,139,140);//Color(0x7185ab);
         return new GradientWithBorderPainter(topLineColor, bottomColor, topColor, bottomColor);
     }
 
     private static MacWidgetsPainter<Component> createSourceListInactiveSelectionPainter() {
-        Color topLineColor = new Color(0x979797);
-        Color topColor = new Color(0xb4b4b4);
-        Color bottomColor = new Color(0x8a8a8a);
+        Color topLineColor = new Color(206,206,206);//Color(0x979797);
+        Color topColor = new Color(206,206,206);//Color(0xb4b4b4);
+        Color bottomColor = new Color(206,206,206);//Color(0x8a8a8a);
         return new GradientWithBorderPainter(topLineColor, bottomColor, topColor, bottomColor);
     }
 }

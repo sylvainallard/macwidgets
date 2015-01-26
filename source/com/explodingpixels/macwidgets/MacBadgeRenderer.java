@@ -16,6 +16,7 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 
 import com.explodingpixels.widgets.WindowUtils;
+import javax.swing.SwingUtilities;
 
 /**
  * Renders a rounded rectangle (i.e. a badge) with a given number in the center of the rectangle.
@@ -29,6 +30,7 @@ public class MacBadgeRenderer {
     protected static Font BADGE_FONT = new Font("Helvetica", Font.BOLD, 11);
 
     protected final Color fSelectedColor;
+    protected Color fInactiveSelectedColor = new Color(39,39,39);
     protected final Color fActiveUnselectedColor;
     protected final Color fInactiveUnselectedColor;
     protected final Color fTextColor;
@@ -82,14 +84,18 @@ public class MacBadgeRenderer {
 
     private class CustomJLabel extends JLabel {
 
-        private Color getSelectedBadgeColor() {
-            return fSelectedColor;
+        private Color getSelectedBadgeColor(boolean compHasFocus) {
+            return compHasFocus ? fSelectedColor : fInactiveSelectedColor;
         }
 
         private Color getUnselectedBadgeColor(boolean parentWindowHasFocus) {
             return parentWindowHasFocus ? fActiveUnselectedColor : fInactiveUnselectedColor;
         }
-
+        
+        private boolean isSourceListFocus(){
+            //hack to get the source list panel: must be a way to do it cleaner
+            return this.getParent().getParent().getParent().hasFocus();
+        }
         @Override
         protected void paintComponent(Graphics g) {
             // create a buffered image to draw the component into. this lets us
@@ -103,7 +109,7 @@ public class MacBadgeRenderer {
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                     RenderingHints.VALUE_ANTIALIAS_ON);
             g2d.setColor(fSelected
-                    ? getSelectedBadgeColor()
+                    ? getSelectedBadgeColor(isSourceListFocus())
                     : getUnselectedBadgeColor(WindowUtils.isParentWindowFocused(this)));
 
             // draw the badge.

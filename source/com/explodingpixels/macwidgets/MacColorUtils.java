@@ -13,14 +13,15 @@ public class MacColorUtils {
 
     // Leopard colors. ////////////////////////////////////////////////////////////////////////////
 
-    public static Color LEOPARD_BORDER_COLOR = new Color(0x555555);
+//    public static Color LEOPARD_BORDER_COLOR = new Color(0x555555);
+    public static Color LEOPARD_BORDER_COLOR = new Color(0xCBCBCB);
 
     // OS X unified toolbar colors. ///////////////////////////////////////////////////////////////
 
     private static final Color LEOPARD_TEXTURED_WINDOW_FOCUSED_BORDER_COLOR = new Color(64, 64, 64);
     private static final Color LEOPARD_TEXTURED_WINDOW_UNFOCUSED_BORDER_COLOR = new Color(135, 135, 135);
-    private static final Color TEXTURED_WINDOW_FOCUSED_BORDER_COLOR = new Color(0x515151);
-    private static final Color TEXTURED_WINDOW_UNFOCUSED_BORDER_COLOR = new Color(0x969696);
+    private static final Color TEXTURED_WINDOW_FOCUSED_BORDER_COLOR = new Color(121,121,121);//Color(0x515151);
+    private static final Color TEXTURED_WINDOW_UNFOCUSED_BORDER_COLOR = new Color(171,171,171);//Color(0x969696);
 
     /**
      * Gets the color used to separate a {@link UnifiedToolBar} from the window content when the

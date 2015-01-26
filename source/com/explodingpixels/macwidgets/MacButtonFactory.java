@@ -47,9 +47,9 @@ public class MacButtonFactory {
             ComponentBottomBar.class.getResource(
                     "/com/explodingpixels/macwidgets/images/component_status_bar_shiny_background_no_border.png");
 
-    static final ImagePainter GRADIENT_BUTTON_IMAGE_PAINTER =
-            new ImagePainter(GRADIENT_BACKGROUND_URL);
-
+//    static final ImagePainter GRADIENT_BUTTON_IMAGE_PAINTER =
+//            new ImagePainter(GRADIENT_BACKGROUND_URL);
+    static final RectanglePainter GRADIENT_BUTTON_IMAGE_PAINTER = new RectanglePainter(Color.decode("#f2f2f2"));
     private static final MacWidgetsPainter<Component> PRESSED_AND_SELECTED_GRADIENT_PAINTER =
             new CompoundPainter<Component>(GRADIENT_BUTTON_IMAGE_PAINTER,
                     new RectanglePainter(new Color(0, 0, 0, 89)));
