@@ -55,7 +55,7 @@ public class PreferencesTabBarButtonUI extends UnifiedToolbarButtonUI {
         ButtonModel model = b.getModel();
 
         // if the button is selected, draw the selection background.
-        if (model.isSelected()) {
+        if (model.isSelected() && icoSelected == null) {
             Graphics2D graphics = (Graphics2D) g.create();
             paintSelectedButtonBackground(b, graphics);
             graphics.dispose();
