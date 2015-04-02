@@ -22,7 +22,7 @@ import sun.swing.SwingUtilities2;
 public class UnifiedToolbarButtonUI extends BasicButtonUI {
 
     private static final Color PRESSED_BUTTON_MASK_COLOR = new Color(0, 0, 0, 128);
-    private Icon icoPressed, icoRollover, icoRollSel, icoSelected;
+    protected Icon icoPressed, icoRollover, icoRollSel, icoSelected;
     private static final Color DISABLED_BUTTON_MASK_COLOR = new Color(255, 255, 255, 128);
 
     @Override
