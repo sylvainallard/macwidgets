@@ -92,13 +92,9 @@ public class MacBadgeRenderer {
 
         @Override
         protected void paintComponent(Graphics g) {
-            // create a buffered image to draw the component into. this lets us
-            // draw "out" an area, making it transparent.
-            BufferedImage image = new BufferedImage(getWidth(), getHeight(),
-                    BufferedImage.TYPE_INT_ARGB);
-
+ 
             // create the graphics and set its initial state.
-            Graphics2D g2d = image.createGraphics();
+            Graphics2D g2d = (Graphics2D) g.create();
             g2d.setFont(getFont());
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                     RenderingHints.VALUE_ANTIALIAS_ON);
@@ -129,9 +125,6 @@ public class MacBadgeRenderer {
 
             // draw the badge text.
             g2d.drawString(getText(), x, y);
-
-            // draw the image into this component.
-            g.drawImage(image, 0, 0, null);
 
             // dispose of the buffered image graphics.
             g2d.dispose();
