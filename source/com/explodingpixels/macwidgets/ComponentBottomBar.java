@@ -1,5 +1,6 @@
 package com.explodingpixels.macwidgets;
 
+import com.explodingpixels.painter.RectanglePainter;
 import java.awt.BorderLayout;
 import java.awt.Cursor;
 import java.awt.event.ActionListener;
@@ -19,6 +20,7 @@ import javax.swing.border.Border;
 
 import com.explodingpixels.widgets.PopdownButton;
 import com.explodingpixels.widgets.PopupMenuCustomizer;
+import java.awt.Color;
 
 public class ComponentBottomBar extends TriAreaComponent {
 
@@ -35,7 +37,8 @@ public class ComponentBottomBar extends TriAreaComponent {
 
 	public ComponentBottomBar() {
 		super();
-		setBackgroundPainter(MacButtonFactory.GRADIENT_BUTTON_IMAGE_PAINTER);
+		//setBackgroundPainter(MacButtonFactory.GRADIENT_BUTTON_IMAGE_PAINTER);
+                setBackgroundPainter(new RectanglePainter(Color.decode("#f2f2f2")));
 		getComponent().setBorder(
 				BorderFactory.createMatteBorder(1, 0, 0, 0,
 						MacButtonFactory.GRADIENT_BUTTON_BORDER_COLOR));

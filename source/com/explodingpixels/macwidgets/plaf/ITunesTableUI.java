@@ -39,18 +39,32 @@ import com.explodingpixels.widgets.WindowUtils;
  */
 public class ITunesTableUI extends BasicTableUI {
 
-	protected static final Color EVEN_ROW_COLOR = new Color(241, 245, 250);
+//	protected static final Color EVEN_ROW_COLOR = new Color(241, 245, 250);
+        protected static final Color EVEN_ROW_COLOR = new Color(241, 244, 247);
 	protected static final Color TABLE_GRID_COLOR = new Color(0xd9d9d9);
 	protected static final Color SELECTION_ACTIVE_SELECTION_FOREGROUND_COLOR = Color.WHITE;
-	protected static final Color SELECTION_ACTIVE_SELECTION_BACKGROUND_COLOR = new Color(
-			0x3d80df);
+//	protected static final Color SELECTION_ACTIVE_SELECTION_BACKGROUND_COLOR = new Color(
+//			0x3d80df);
+//	protected static final Color SELECTION_INACTIVE_SELECTION_FOREGROUND_COLOR = Color.BLACK;
+        
+        protected static final Color SELECTION_ACTIVE_SELECTION_BACKGROUND_COLOR = new Color(
+			17,133,247);
 	protected static final Color SELECTION_INACTIVE_SELECTION_FOREGROUND_COLOR = Color.BLACK;
-	protected static final Color SELECTION_INACTIVE_SELECTION_BACKGROUND_COLOR = new Color(
-			0xc0c0c0);
-	protected static final Color SELECTION_ACTIVE_BOTTOM_BORDER_COLOR = new Color(
-			125, 170, 234);
+        
+//	protected static final Color SELECTION_INACTIVE_SELECTION_BACKGROUND_COLOR = new Color(
+//			0xc0c0c0);
+        protected static final Color SELECTION_INACTIVE_SELECTION_BACKGROUND_COLOR = new Color(
+			220,220,220);
+//	protected static final Color SELECTION_ACTIVE_BOTTOM_BORDER_COLOR = new Color(
+//			125, 170, 234);
+//	protected static final Color SELECTION_INACTIVE_BOTTOM_BORDER_COLOR = new Color(
+//			224, 224, 224);
+        
+        protected static final Color SELECTION_ACTIVE_BOTTOM_BORDER_COLOR = new Color(
+			17,133,247);
 	protected static final Color SELECTION_INACTIVE_BOTTOM_BORDER_COLOR = new Color(
-			224, 224, 224);
+			220, 220, 220);
+        
 	protected static final Color TRANSPARENT_COLOR = new Color(0, 0, 0, 0);
 
 	@Override

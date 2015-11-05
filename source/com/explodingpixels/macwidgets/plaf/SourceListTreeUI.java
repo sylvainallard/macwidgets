@@ -49,6 +49,9 @@ import com.explodingpixels.widgets.WindowUtils;
 import com.jgoodies.forms.builder.PanelBuilder;
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
+import java.awt.KeyboardFocusManager;
+import java.awt.Window;
+import javax.swing.SwingUtilities;
 
 /**
  * <p>
@@ -483,6 +486,11 @@ public class SourceListTreeUI extends BasicTreeUI {
                 fColorScheme.getSelectedItemTextColor(),
                 fColorScheme.getSelectedItemTextColor(),
                 fColorScheme.getSelectedItemFontShadowColor());
+        
+        private JLabel fSelectedUnfocusLabel = MacWidgetFactory.makeEmphasizedLabel(new JLabel(),
+                fColorScheme.getUnselectedItemTextColor(),
+                fColorScheme.getUnselectedItemTextColor(),
+                TRANSPARENT_COLOR);
 
         private JLabel fUnselectedLabel = MacWidgetFactory.makeEmphasizedLabel(new JLabel(),
                 fColorScheme.getUnselectedItemTextColor(),
@@ -500,11 +508,26 @@ public class SourceListTreeUI extends BasicTreeUI {
         public Component getTreeCellRendererComponent(
                 JTree tree, Object value, boolean selected, boolean expanded, boolean leaf, int row,
                 boolean hasFocus) {
-            fSelectedLabel.setFont(getItemSelectedFont());
+            
+            boolean bTreeFocus = getTreeFocusState(tree);
+            //System.out.println(bTreeFocus);
+            
+            fSelectedLabel.setFont(getItemSelectedFont()); 
             fUnselectedLabel.setFont(getItemFont());
 
             TreeNode node = (TreeNode) value;
-            JLabel label = selected ? fSelectedLabel : fUnselectedLabel;
+            JLabel label;
+            if(selected && bTreeFocus){
+                label = fSelectedLabel;
+            }else if(selected && !bTreeFocus){
+                label = fSelectedUnfocusLabel;
+            }else{
+                label = fUnselectedLabel;
+            }
+            
+            //JLabel label = selected ? fSelectedLabel : fUnselectedLabel;
+            
+            
             label.setText(getTextForNode(node, selected, expanded, leaf, row, hasFocus));
             label.setIcon(getIconForNode(node));
 
@@ -524,6 +547,20 @@ public class SourceListTreeUI extends BasicTreeUI {
             }
 
             return fBuilder.getPanel();
+        }
+        
+        private boolean getTreeFocusState(JTree tree){
+            
+            boolean focus = false;
+            
+            if (tree.hasFocus()) {
+                    focus = true;
+            
+            } else {
+                    focus = false;
+            }
+            
+            return focus;
         }
     }
 

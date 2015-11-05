@@ -61,9 +61,9 @@ public class IAppWidgetFactory {
      */
     public static JScrollPane makeIAppScrollPane(JScrollPane scrollPane) {
         scrollPane.setBorder(BorderFactory.createEmptyBorder());
-        installUIDelegates(scrollPane);
-        scrollPane.setCorner(JScrollPane.LOWER_RIGHT_CORNER, createScrollPaneCorner());
-        scrollPane.setCorner(JScrollPane.LOWER_LEFT_CORNER, createScrollPaneCornerLowerLeft());
+//        installUIDelegates(scrollPane);
+//        scrollPane.setCorner(JScrollPane.LOWER_RIGHT_CORNER, createScrollPaneCorner());
+//        scrollPane.setCorner(JScrollPane.LOWER_LEFT_CORNER, createScrollPaneCornerLowerLeft());
         // TODO listen for scrollBar.setUI calls in order to reinstall UI delegates.
         return scrollPane;
     }

@@ -15,8 +15,11 @@ public class MacPainterFactory {
     public static MacWidgetsPainter<Component> createIAppUnpressedUnselectedHeaderPainter() {
         return new MacWidgetsPainter<Component>() {
 
-            private Color TOP_GRADIENT_COLOR = new Color(0xdbdbdb);
-            private Color BOTTOM_GRADIENT_COLOR = new Color(0xbbbbbb);
+//            private Color TOP_GRADIENT_COLOR = new Color(0xdbdbdb);
+//            private Color BOTTOM_GRADIENT_COLOR = new Color(0xbbbbbb);
+            
+            private Color TOP_GRADIENT_COLOR = new Color(0xFFFFFF);
+            private Color BOTTOM_GRADIENT_COLOR = new Color(0xFFFFFF);
 
             public void paint(Graphics2D graphics2D, Component component,
                               int width, int height) {
@@ -31,8 +34,11 @@ public class MacPainterFactory {
     public static MacWidgetsPainter<Component> createIAppPressedUnselectedHeaderPainter() {
         return new MacWidgetsPainter<Component>() {
 
-            private Color TOP_GRADIENT_COLOR = new Color(0xc4c4c4);
-            private Color BOTTOM_GRADIENT_COLOR = new Color(0x959595);
+//            private Color TOP_GRADIENT_COLOR = new Color(0xc4c4c4);
+//            private Color BOTTOM_GRADIENT_COLOR = new Color(0x959595);
+            
+            private Color TOP_GRADIENT_COLOR = new Color(0xFFFFFF);
+            private Color BOTTOM_GRADIENT_COLOR = new Color(0xFFFFFF);
 
             public void paint(Graphics2D graphics2D, Component component,
                               int width, int height) {
@@ -47,8 +53,11 @@ public class MacPainterFactory {
     public static MacWidgetsPainter<Component> createIAppUnpressedSelectedHeaderPainter() {
         return new MacWidgetsPainter<Component>() {
 
-            private Color TOP_GRADIENT_COLOR = new Color(0xc2cfdd);
-            private Color BOTTOM_GRADIENT_COLOR = new Color(0x7d93b2);
+//            private Color TOP_GRADIENT_COLOR = new Color(0xc2cfdd);
+//            private Color BOTTOM_GRADIENT_COLOR = new Color(0x7d93b2);
+            
+            private Color TOP_GRADIENT_COLOR = new Color(0xFFFFFF);
+            private Color BOTTOM_GRADIENT_COLOR = new Color(0xFFFFFF);
 
             public void paint(Graphics2D graphics2D, Component component,
                               int width, int height) {
@@ -64,8 +73,11 @@ public class MacPainterFactory {
     public static MacWidgetsPainter<Component> createIAppPressedSelectedHeaderPainter() {
         return new MacWidgetsPainter<Component>() {
 
-            private Color TOP_GRADIENT_COLOR = new Color(0xa6b7cb);
-            private Color BOTTOM_GRADIENT_COLOR = new Color(0x536b90);
+//            private Color TOP_GRADIENT_COLOR = new Color(0xa6b7cb);
+//            private Color BOTTOM_GRADIENT_COLOR = new Color(0x536b90);
+            
+            private Color TOP_GRADIENT_COLOR = new Color(0xFFFFFF);
+            private Color BOTTOM_GRADIENT_COLOR = new Color(0xFFFFFF);
 
             public void paint(Graphics2D graphics2D, Component component,
                               int width, int height) {
