@@ -1,12 +1,10 @@
 package com.explodingpixels.macwidgets.plaf;
 
-import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
 
 import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
@@ -17,13 +15,15 @@ import javax.swing.plaf.basic.BasicButtonUI;
 import com.explodingpixels.macwidgets.MacColorUtils;
 import com.explodingpixels.macwidgets.MacFontUtils;
 import javax.swing.Icon;
+import javax.swing.JLabel;
 import sun.swing.SwingUtilities2;
 
 public class UnifiedToolbarButtonUI extends BasicButtonUI {
 
     private static final Color PRESSED_BUTTON_MASK_COLOR = new Color(0, 0, 0, 128);
     private Icon icoPressed, icoRollover, icoRollSel, icoSelected;
-    private static final Color DISABLED_BUTTON_MASK_COLOR = new Color(255, 255, 255, 128);
+    private JLabel lblDisabledGenerator;
+    private Icon disabledRef;
 
     @Override
     protected void installDefaults(AbstractButton b) {
@@ -56,7 +56,12 @@ public class UnifiedToolbarButtonUI extends BasicButtonUI {
         // create a graphics context from the buffered image.
         Graphics2D graphics = (Graphics2D) g;
         // paint the icon into the buffered image.
-        if( icoPressed != null && model.isPressed() ) {
+        if (!model.isEnabled()) {
+            Icon ico = validateDisabledIco(b.getIcon());
+            if(ico != null){
+                ico.paintIcon(c, graphics, iconRect.x, iconRect.y);
+            }
+        }else if( icoPressed != null && model.isPressed() ) {
             icoPressed.paintIcon(c, graphics, iconRect.x, iconRect.y);
         } else if( icoRollSel != null && model.isRollover() && model.isSelected() ) {
             icoRollSel.paintIcon(c, graphics, iconRect.x, iconRect.y);
@@ -68,17 +73,24 @@ public class UnifiedToolbarButtonUI extends BasicButtonUI {
             b.getIcon().paintIcon(c, graphics, iconRect.x, iconRect.y);
         }
         
-        if (!model.isEnabled()) {
-            graphics.setColor(DISABLED_BUTTON_MASK_COLOR);
-        } else if (model.isArmed()) {
+        if (model.isArmed()) {
             graphics.setColor(PRESSED_BUTTON_MASK_COLOR);
-        } else {
-            return;
+            // fill a rectangle with the mask color.
+            graphics.fillRect(0, 0, c.getWidth(), c.getHeight());
+        }       
+
+    }
+    
+    public Icon validateDisabledIco(Icon icon) {
+        if(disabledRef != icon){
+            disabledRef = icon;
+            if(lblDisabledGenerator == null){
+                lblDisabledGenerator = new JLabel();
+            }
+            lblDisabledGenerator.setIcon(icon);
+            return lblDisabledGenerator.getDisabledIcon();
         }
-
-        // fill a rectangle with the mask color.
-        graphics.fillRect(0, 0, c.getWidth(), c.getHeight());
-
+        return lblDisabledGenerator.getDisabledIcon();
     }
 
     @Override
