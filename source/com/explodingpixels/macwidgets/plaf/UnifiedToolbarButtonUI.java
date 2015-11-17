@@ -53,43 +53,32 @@ public class UnifiedToolbarButtonUI extends BasicButtonUI {
         AbstractButton b = (AbstractButton) c;
         ButtonModel model = b.getModel();
 
-        // create a buffered image to draw the icon and mask into.
-        BufferedImage image = new BufferedImage(iconRect.width, iconRect.height,
-                BufferedImage.TYPE_INT_ARGB);
         // create a graphics context from the buffered image.
-        Graphics2D graphics = (Graphics2D) image.getGraphics();
+        Graphics2D graphics = (Graphics2D) g;
         // paint the icon into the buffered image.
         if( icoPressed != null && model.isPressed() ) {
-            icoPressed.paintIcon(c, graphics, 0, 0);
+            icoPressed.paintIcon(c, graphics, iconRect.x, iconRect.y);
         } else if( icoRollSel != null && model.isRollover() && model.isSelected() ) {
-            icoRollSel.paintIcon(c, graphics, 0, 0);
+            icoRollSel.paintIcon(c, graphics, iconRect.x, iconRect.y);
         } else if( icoRollover != null && model.isRollover() ) {
-            icoRollover.paintIcon(c, graphics, 0, 0);
+            icoRollover.paintIcon(c, graphics, iconRect.x, iconRect.y);
         } else if( icoSelected != null && model.isSelected() ) {
-            icoSelected.paintIcon(c, graphics, 0, 0);
+            icoSelected.paintIcon(c, graphics, iconRect.x, iconRect.y);
         } else {
-            b.getIcon().paintIcon(c, graphics, 0, 0);
+            b.getIcon().paintIcon(c, graphics, iconRect.x, iconRect.y);
         }
-
-        // set the composite on the graphics context to SrcAtop which blends the
-        // source with the destination, and thus transparent pixels in the
-        // destination, remain transparent.
-        graphics.setComposite(AlphaComposite.SrcAtop);
-
-        // set the mask color based on the button models state.
+        
         if (!model.isEnabled()) {
             graphics.setColor(DISABLED_BUTTON_MASK_COLOR);
         } else if (model.isArmed()) {
             graphics.setColor(PRESSED_BUTTON_MASK_COLOR);
         } else {
-            graphics.setColor(new Color(0, 0, 0, 0));
+            return;
         }
 
         // fill a rectangle with the mask color.
-        graphics.fillRect(0, 0, iconRect.width, iconRect.height);
+        graphics.fillRect(0, 0, c.getWidth(), c.getHeight());
 
-        graphics.dispose();
-        g.drawImage(image, iconRect.x, iconRect.y, null);
     }
 
     @Override
