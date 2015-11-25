@@ -21,7 +21,7 @@ import sun.swing.SwingUtilities2;
 public class UnifiedToolbarButtonUI extends BasicButtonUI {
 
     private static final Color PRESSED_BUTTON_MASK_COLOR = new Color(0, 0, 0, 128);
-    private Icon icoPressed, icoRollover, icoRollSel, icoSelected;
+    protected Icon icoPressed, icoRollover, icoRollSel, icoSelected;
     private JLabel lblDisabledGenerator;
     private Icon disabledRef;
 
@@ -63,6 +63,7 @@ public class UnifiedToolbarButtonUI extends BasicButtonUI {
             }
         }else if( icoPressed != null && model.isPressed() ) {
             icoPressed.paintIcon(c, graphics, iconRect.x, iconRect.y);
+            return; //dont render the dark background if there is a pressed Icon
         } else if( icoRollSel != null && model.isRollover() && model.isSelected() ) {
             icoRollSel.paintIcon(c, graphics, iconRect.x, iconRect.y);
         } else if( icoRollover != null && model.isRollover() ) {
