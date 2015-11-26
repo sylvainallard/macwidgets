@@ -67,7 +67,7 @@ public class HudWindow {
     private final HudPanel fHudPanel = new HudPanel();
     private final BottomPanel fBottomPanel;
 
-    private static final int ROUNDED_RECT_DIAMETER = 16;
+    private static final int ROUNDED_RECT_DIAMETER = 0;
 
     /**
      * Creates a Heads Up Display style window.
@@ -276,7 +276,7 @@ public class HudWindow {
                     RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
             // calculate the point in the title bar at which to change the background color.
-            int midPointY = ROUNDED_RECT_DIAMETER / 2 + 3;
+            int midPointY = 16 / 2 + 3;
 
             // if the window has focus, draw a shiny title bar.
             // else draw a flat background.
