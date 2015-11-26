@@ -66,8 +66,9 @@ public class HudWindow {
     private final TitlePanel fTitlePanel;
     private final HudPanel fHudPanel = new HudPanel();
     private final BottomPanel fBottomPanel;
+    private final static Color transparentColor = new Color(0,0,0,0);
 
-    private static final int ROUNDED_RECT_DIAMETER = 0;
+    private static final int ROUNDED_RECT_DIAMETER = System.getProperty("os.name").toLowerCase().contains("windows 10") ? 0 : 16;
 
     /**
      * Creates a Heads Up Display style window.
@@ -351,7 +352,11 @@ public class HudWindow {
                     RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
             graphics2d.setComposite(AlphaComposite.Src);
-
+            
+            //fix for java8 to avoid black corners
+            graphics2d.setColor(transparentColor);
+            graphics2d.fillRect(0, 0, getWidth(), getHeight());
+            
             // draw the rounded rectangle background of the window.
             graphics2d.setColor(BACKGROUND);
             graphics2d.fillRoundRect(0, 0, getWidth(), getHeight(),
