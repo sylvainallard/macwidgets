@@ -42,21 +42,13 @@ public class WidgetStandardColorScheme implements WidgetColorScheme {
     private static final Color INACTIVE_SELECTION_TOP_COLOR = new Color(0xb4b4b4);
     private static final Color INACTIVE_SELECTION_BOTTOM_COLOR = new Color(0x8a8a8a);
     
-    public static final Icon UNSELECTED_COLLAPSED_ICON = new ImageIcon(
-            SourceList.class.getResource(
-                    "/com/explodingpixels/macwidgets/images/source_list_right_arrow.png"));
+    public static final Icon UNSELECTED_COLLAPSED_ICON = MacIcons.COLLAPSED;
 
-    private static final Icon UNSELECTED_EXPANDED_ICON = new ImageIcon(
-            SourceList.class.getResource(
-                    "/com/explodingpixels/macwidgets/images/source_list_down_arrow.png"));
+    private static final Icon UNSELECTED_EXPANDED_ICON = MacIcons.EXPANDED;
+    
+    private static final Icon SELECTED_COLLAPSED_ICON = MacIcons.COLLAPSED_WHITE;
 
-    private static final Icon SELECTED_COLLAPSED_ICON = new ImageIcon(
-            SourceList.class.getResource(
-                    "/com/explodingpixels/macwidgets/images/source_list_white_right_arrow.png"));
-
-    private static final Icon SELECTED_EXPANDED_ICON = new ImageIcon(
-            SourceList.class.getResource(
-                    "/com/explodingpixels/macwidgets/images/source_list_white_down_arrow.png"));
+    private static final Icon SELECTED_EXPANDED_ICON = MacIcons.EXPANDED_WHITE;
 
     private static final MacWidgetsPainter<Component> ACTIVE_FOCUSED_SELECTION_PAINTER =
             createSourceListActiveFocusedSelectionPainter();

@@ -210,17 +210,11 @@ public class HudWindow {
 
         private static final Color UNFOCUSED_BACKGROUND = new Color(0, 0, 0, 10);
 
-        private static final Icon CLOSE_ICON = new ImageIcon(
-                TitlePanel.class.getResource(
-                        "/com/explodingpixels/macwidgets/images/close.png"));
+        private static final Icon CLOSE_ICON =  MacIcons.CLOSE;
 
-        private static final Icon CLOSE_HOVER_ICON = new ImageIcon(
-                TitlePanel.class.getResource(
-                        "/com/explodingpixels/macwidgets/images/close_hover.png"));
+        private static final Icon CLOSE_HOVER_ICON = MacIcons.CLOSE_HOVER;
 
-        private static final Icon CLOSE_PRESSED_ICON = new ImageIcon(
-                TitlePanel.class.getResource(
-                        "/com/explodingpixels/macwidgets/images/close_pressed.png"));
+        private static final Icon CLOSE_PRESSED_ICON = MacIcons.CLOSE_PRESSED;
 
         private final JButton fCloseButton = new JButton(CLOSE_ICON);
 
@@ -372,9 +366,7 @@ public class HudWindow {
 
     private static class BottomPanel extends JPanel {
 
-        private static final Icon RESIZE_ICON = new ImageIcon(
-                TitlePanel.class.getResource(
-                        "/com/explodingpixels/macwidgets/images/resize_corner_dark.png"));
+        private static final Icon RESIZE_ICON = MacIcons.RESIZE;
 
         private final Window fWindow;
         private final JLabel fResizeCorner = new JLabel(RESIZE_ICON);

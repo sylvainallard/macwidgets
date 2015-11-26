@@ -1,5 +1,6 @@
 package com.explodingpixels.widgets.plaf;
 
+import com.explodingpixels.macwidgets.MacIcons;
 import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
@@ -201,10 +202,10 @@ public class EPTabPainter {
 
     private static class DefaultCloseButtonIcon implements CloseButtonIcon {
 
-        private ImageIcon fSelected = createImageIcon("close.png");
-        private ImageIcon fUnselected = createImageIcon("close_unselected.png");
-        private ImageIcon fOver = createImageIcon("close_over.png");
-        private ImageIcon fPressed = createImageIcon("close_pressed.png");
+        private ImageIcon fSelected = MacIcons.WIDGET_CLOSE;
+        private ImageIcon fUnselected = MacIcons.WIDGET_CLOSE_UNSELECTED;
+        private ImageIcon fOver = MacIcons.WIDGET_CLOSE_OVER;
+        private ImageIcon fPressed = MacIcons.WIDGET_CLOSE_PRESSED;
 
         public int getWidth() {
             return fSelected.getIconWidth();

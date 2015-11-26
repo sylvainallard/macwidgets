@@ -35,13 +35,9 @@ public class WidgetDarkColorScheme implements WidgetColorScheme {
     private static final Color INACTIVE_SELECTION_TOP_COLOR = new Color(0xb4b4b4);
     private static final Color INACTIVE_SELECTION_BOTTOM_COLOR = new Color(0x8a8a8a);
     
-    private static final Icon COLLAPSED_ICON = new ImageIcon(
-            SourceList.class.getResource(
-                    "/com/explodingpixels/macwidgets/images/source_list_white_right_arrow.png"));
+    private static final Icon COLLAPSED_ICON = MacIcons.COLLAPSED_WHITE;
 
-    private static final Icon EXPANDED_ICON = new ImageIcon(
-            SourceList.class.getResource(
-                    "/com/explodingpixels/macwidgets/images/source_list_white_down_arrow.png"));
+    private static final Icon EXPANDED_ICON =  MacIcons.EXPANDED_WHITE;
 
     private static final MacWidgetsPainter<Component> ACTIVE_FOCUSED_SELECTION_PAINTER =
             createSourceListActiveFocusedSelectionPainter();

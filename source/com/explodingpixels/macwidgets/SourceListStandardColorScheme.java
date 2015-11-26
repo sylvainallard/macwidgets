@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.Icon;
-import javax.swing.ImageIcon;
 
 import com.explodingpixels.macwidgets.plaf.EmphasizedLabelUI;
 import com.explodingpixels.painter.GradientWithBorderPainter;
@@ -44,21 +43,13 @@ public class SourceListStandardColorScheme implements SourceListColorScheme {
     private static Color BADGE_INACTIVE_UNSELECTED_COLOR = new Color(94,94,94);//Color(0x9a9a9a);
     private static Color BADGE_TEXT_COLOR = BADGE_SELECTED_COLOR;
 
-    public static final Icon UNSELECTED_COLLAPSED_ICON = new ImageIcon(
-            SourceList.class.getResource(
-                    "/com/explodingpixels/macwidgets/images/source_list_right_arrow.png"));
+    public static final Icon UNSELECTED_COLLAPSED_ICON = MacIcons.COLLAPSED;
 
-    private static final Icon UNSELECTED_EXPANDED_ICON = new ImageIcon(
-            SourceList.class.getResource(
-                    "/com/explodingpixels/macwidgets/images/source_list_down_arrow.png"));
+    private static final Icon UNSELECTED_EXPANDED_ICON = MacIcons.EXPANDED;
+    
+    private static final Icon SELECTED_COLLAPSED_ICON = MacIcons.COLLAPSED_WHITE;
 
-    private static final Icon SELECTED_COLLAPSED_ICON = new ImageIcon(
-            SourceList.class.getResource(
-                    "/com/explodingpixels/macwidgets/images/source_list_white_right_arrow.png"));
-
-    private static final Icon SELECTED_EXPANDED_ICON = new ImageIcon(
-            SourceList.class.getResource(
-                    "/com/explodingpixels/macwidgets/images/source_list_white_down_arrow.png"));
+    private static final Icon SELECTED_EXPANDED_ICON = MacIcons.EXPANDED_WHITE;
 
     public MacWidgetsPainter<Component> getActiveFocusedSelectedItemPainter() {
         return ACTIVE_FOCUSED_SELECTION_PAINTER;

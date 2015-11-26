@@ -580,6 +580,7 @@ public class SourceListTreeUI extends BasicTreeUI {
             if (canSelect(path)) {
                 super.setSelectionPath(path);
             }
+            tree.repaint(); //fix ui glitch on retina screen
         }
 
         @Override

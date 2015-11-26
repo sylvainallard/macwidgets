@@ -9,6 +9,7 @@ import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.Transparency;
 import java.awt.image.BufferedImage;
@@ -17,6 +18,7 @@ import java.awt.image.ImageProducer;
 import java.lang.reflect.Field;
 import javax.swing.GrayFilter;
 import javax.swing.ImageIcon;
+import sun.awt.image.MultiResolutionToolkitImage;
 
 /**
  *
