@@ -1,5 +1,6 @@
 package com.explodingpixels.macwidgets;
 
+import com.explodingpixels.util.Retina;
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Font;
@@ -98,9 +99,13 @@ public class MacBadgeRenderer {
         }
         @Override
         protected void paintComponent(Graphics g) {
- 
+            // create a buffered image to draw the component into. this lets us
+            // draw "out" an area, making it transparent.
+            BufferedImage image = Retina.createBufferedImage(getWidth(), getHeight(), true);
+
             // create the graphics and set its initial state.
-            Graphics2D g2d = (Graphics2D) g.create();
+            Graphics2D g2d = image.createGraphics();
+            Retina.scaleUpGraphics2D(g2d);
             g2d.setFont(getFont());
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                     RenderingHints.VALUE_ANTIALIAS_ON);
@@ -131,6 +136,10 @@ public class MacBadgeRenderer {
 
             // draw the badge text.
             g2d.drawString(getText(), x, y);
+
+            Retina.scaleDownGraphics2D((Graphics2D) g);
+            // draw the image into this component.
+            g.drawImage(image, 0, 0, null);
 
             // dispose of the buffered image graphics.
             g2d.dispose();

@@ -44,11 +44,16 @@ public class DSourceListTreeUI {
         SourceListItem sourceListItem = new SourceListItem("Item C", mobileMeIcon);
         sourceListItem.setCounterValue(10);
         DefaultMutableTreeNode itemC = new DefaultMutableTreeNode(sourceListItem);
+        
+        SourceListItem sourceListItem2 = new SourceListItem("Item CC", mobileMeIcon);
+        sourceListItem2.setCounterValue(9);
+        DefaultMutableTreeNode itemCC = new DefaultMutableTreeNode(sourceListItem2);
 
         root.add(categoryOne);
         categoryOne.add(itemA);
         categoryOne.add(itemB);
         categoryOne.add(itemC);
+        categoryOne.add(itemCC);
 
         JTree tree = new JTree(model);
         tree.setUI(new SourceListTreeUI());
