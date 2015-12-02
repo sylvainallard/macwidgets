@@ -16,6 +16,9 @@ import javax.swing.ImageIcon;
  * @author jeanfelix
  */
 public class RetinaIcon extends ImageIcon {
+    
+    public RetinaIcon() {
+    }
 
     public RetinaIcon(Image image) {
         super(image);

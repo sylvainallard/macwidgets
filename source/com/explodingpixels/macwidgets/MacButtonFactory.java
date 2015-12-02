@@ -22,18 +22,14 @@ import com.explodingpixels.util.Retina;
 import com.explodingpixels.util.RetinaIcon;
 import com.explodingpixels.widgets.PopdownButton;
 import com.explodingpixels.widgets.PopupMenuCustomizer;
-import java.awt.Image;
 import javax.swing.ButtonModel;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import sun.awt.image.MultiResolutionImage;
 
 /**
  * A factory for creating Mac-style buttons.
  */
 public class MacButtonFactory {
 
-    private static JLabel lblDisabledGenerator = new JLabel();
+
 
     // Unified toolbar button methods. ////////////////////////////////////////////////////////////
     public static AbstractButton makeUnifiedToolBarButton(AbstractButton button) {
@@ -106,17 +102,8 @@ public class MacButtonFactory {
     public static Icon validateDisabledIco(AbstractButton button) {
         ButtonModel model = button.getModel();
         if (Retina.hasRetinaDisplay() && !model.isEnabled() && button.getIcon() != null && !(button.getDisabledIcon() instanceof RetinaIcon)) {
-            Image img = ((ImageIcon) button.getIcon()).getImage();
-            if (img instanceof MultiResolutionImage) {
-                int w = button.getIcon().getIconWidth() * 2;
-                int h = button.getIcon().getIconHeight() * 2;
-                Image retinaImage = ((MultiResolutionImage) img).getResolutionVariant(w, h);
-                if (retinaImage != null) {
-                    lblDisabledGenerator.setIcon(new ImageIcon(retinaImage));
-                    ImageIcon disIcon = (ImageIcon) lblDisabledGenerator.getDisabledIcon();
-                    button.setDisabledIcon(new RetinaIcon(disIcon.getImage()));
-                }
-            }
+            Icon icoDis = Retina.createDisabledIcon(button);
+            button.setDisabledIcon(icoDis);
         }
         return button.getDisabledIcon();
     }
