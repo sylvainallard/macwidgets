@@ -1,5 +1,6 @@
 package com.explodingpixels.swingx;
 
+import com.explodingpixels.macwidgets.MacButtonFactory;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
@@ -47,7 +48,7 @@ public class EPButton extends JButton {
 
     @Override
     protected void paintComponent(Graphics g) {
-
+        MacButtonFactory.validateDisabledIco(this);
         if (fBackgroundPainter != null) {
             Graphics2D graphics = (Graphics2D) g.create();
             fBackgroundPainter.paint(graphics, this, getWidth(), getHeight());
@@ -55,5 +56,5 @@ public class EPButton extends JButton {
         }
 
         super.paintComponent(g);
-    }
+    }    
 }

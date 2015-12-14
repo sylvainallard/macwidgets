@@ -53,7 +53,9 @@ public class DSourceListTreeUI {
         categoryOne.add(itemA);
         categoryOne.add(itemB);
         categoryOne.add(itemC);
-        categoryOne.add(itemCC);
+        itemC.add(itemCC);
+        
+       
 
         JTree tree = new JTree(model);
         tree.setUI(new SourceListTreeUI());

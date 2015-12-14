@@ -1,5 +1,6 @@
 package com.explodingpixels.macwidgets.plaf;
 
+import com.explodingpixels.macwidgets.MacButtonFactory;
 import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
@@ -15,15 +16,12 @@ import javax.swing.plaf.basic.BasicButtonUI;
 import com.explodingpixels.macwidgets.MacColorUtils;
 import com.explodingpixels.macwidgets.MacFontUtils;
 import javax.swing.Icon;
-import javax.swing.JLabel;
 import sun.swing.SwingUtilities2;
 
 public class UnifiedToolbarButtonUI extends BasicButtonUI {
 
     private static final Color PRESSED_BUTTON_MASK_COLOR = new Color(0, 0, 0, 128);
     protected Icon icoPressed, icoRollover, icoRollSel, icoSelected;
-    private JLabel lblDisabledGenerator;
-    private Icon disabledRef;
 
     @Override
     protected void installDefaults(AbstractButton b) {
@@ -57,7 +55,8 @@ public class UnifiedToolbarButtonUI extends BasicButtonUI {
         Graphics2D graphics = (Graphics2D) g;
         // paint the icon into the buffered image.
         if (!model.isEnabled()) {
-            Icon ico = validateDisabledIco(b.getIcon());
+            MacButtonFactory.validateDisabledIco(b);
+            Icon ico = b.getDisabledIcon();
             if(ico != null){
                 ico.paintIcon(c, graphics, iconRect.x, iconRect.y);
             }
@@ -82,17 +81,7 @@ public class UnifiedToolbarButtonUI extends BasicButtonUI {
 
     }
     
-    public Icon validateDisabledIco(Icon icon) {
-        if(disabledRef != icon){
-            disabledRef = icon;
-            if(lblDisabledGenerator == null){
-                lblDisabledGenerator = new JLabel();
-            }
-            lblDisabledGenerator.setIcon(icon);
-            return lblDisabledGenerator.getDisabledIcon();
-        }
-        return lblDisabledGenerator.getDisabledIcon();
-    }
+    
 
     @Override
     protected void paintText(Graphics g, JComponent c, Rectangle textRect, String text) {

@@ -66,8 +66,9 @@ public class HudWindow {
     private final TitlePanel fTitlePanel;
     private final HudPanel fHudPanel = new HudPanel();
     private final BottomPanel fBottomPanel;
+    private final static Color transparentColor = new Color(0,0,0,0);
 
-    private static final int ROUNDED_RECT_DIAMETER = 16;
+    private static final int ROUNDED_RECT_DIAMETER = System.getProperty("os.name").toLowerCase().contains("windows 10") ? 0 : 16;
 
     /**
      * Creates a Heads Up Display style window.
@@ -210,17 +211,11 @@ public class HudWindow {
 
         private static final Color UNFOCUSED_BACKGROUND = new Color(0, 0, 0, 10);
 
-        private static final Icon CLOSE_ICON = new ImageIcon(
-                TitlePanel.class.getResource(
-                        "/com/explodingpixels/macwidgets/images/close.png"));
+        private static final Icon CLOSE_ICON =  MacIcons.CLOSE;
 
-        private static final Icon CLOSE_HOVER_ICON = new ImageIcon(
-                TitlePanel.class.getResource(
-                        "/com/explodingpixels/macwidgets/images/close_hover.png"));
+        private static final Icon CLOSE_HOVER_ICON = MacIcons.CLOSE_HOVER;
 
-        private static final Icon CLOSE_PRESSED_ICON = new ImageIcon(
-                TitlePanel.class.getResource(
-                        "/com/explodingpixels/macwidgets/images/close_pressed.png"));
+        private static final Icon CLOSE_PRESSED_ICON = MacIcons.CLOSE_PRESSED;
 
         private final JButton fCloseButton = new JButton(CLOSE_ICON);
 
@@ -282,7 +277,7 @@ public class HudWindow {
                     RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
             // calculate the point in the title bar at which to change the background color.
-            int midPointY = ROUNDED_RECT_DIAMETER / 2 + 3;
+            int midPointY = 16 / 2 + 3;
 
             // if the window has focus, draw a shiny title bar.
             // else draw a flat background.
@@ -357,7 +352,11 @@ public class HudWindow {
                     RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
             graphics2d.setComposite(AlphaComposite.Src);
-
+            
+            //fix for java8 to avoid black corners
+            graphics2d.setColor(transparentColor);
+            graphics2d.fillRect(0, 0, getWidth(), getHeight());
+            
             // draw the rounded rectangle background of the window.
             graphics2d.setColor(BACKGROUND);
             graphics2d.fillRoundRect(0, 0, getWidth(), getHeight(),
@@ -372,9 +371,7 @@ public class HudWindow {
 
     private static class BottomPanel extends JPanel {
 
-        private static final Icon RESIZE_ICON = new ImageIcon(
-                TitlePanel.class.getResource(
-                        "/com/explodingpixels/macwidgets/images/resize_corner_dark.png"));
+        private static final Icon RESIZE_ICON = MacIcons.RESIZE;
 
         private final Window fWindow;
         private final JLabel fResizeCorner = new JLabel(RESIZE_ICON);

@@ -24,13 +24,9 @@ import java.awt.Color;
 
 public class ComponentBottomBar extends TriAreaComponent {
 
-    protected static final ImageIcon SPLITTER_HANDLE =
-            new ImageIcon(SourceListControlBar.class.getResource(
-                    "/com/explodingpixels/macwidgets/images/splitter_handle.png"));
-
     protected JSplitPane fSplitPane;
 
-    protected final JLabel fSplitterHandle = new JLabel(SPLITTER_HANDLE);
+    protected final JLabel fSplitterHandle = new JLabel(MacIcons.SPLITTER_HANDLE);
 
     protected final SplitterHandleMouseMovementHandler fMouseListener =
             new SplitterHandleMouseMovementHandler();

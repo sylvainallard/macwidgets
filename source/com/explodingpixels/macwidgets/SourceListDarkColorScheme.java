@@ -38,13 +38,9 @@ public class SourceListDarkColorScheme implements SourceListColorScheme {
     private static final Color SELECTED_ITEM_FONT_COLOR = CATEGORY_FONT_COLOR;
     private static final Color SELECTED_ITEM_FONT_SHADOW_COLOR = CATEGORY_FONT_SHADOW_COLOR;
 
-    private static final Icon COLLAPSED_ICON = new ImageIcon(
-            SourceList.class.getResource(
-                    "/com/explodingpixels/macwidgets/images/source_list_white_right_arrow.png"));
+    private static final Icon COLLAPSED_ICON = MacIcons.COLLAPSED_WHITE;
 
-    private static final Icon EXPANDED_ICON = new ImageIcon(
-            SourceList.class.getResource(
-                    "/com/explodingpixels/macwidgets/images/source_list_white_down_arrow.png"));
+    private static final Icon EXPANDED_ICON = MacIcons.EXPANDED_WHITE;
 
     public MacWidgetsPainter<Component> getActiveFocusedSelectedItemPainter() {
         return ACTIVE_FOCUSED_SELECTION_PAINTER;
