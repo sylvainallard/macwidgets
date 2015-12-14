@@ -101,6 +101,10 @@ public class Retina {
                 ImageIcon disIcon = (ImageIcon) lblDisabledGenerator.getDisabledIcon();
                 return new RetinaIcon(disIcon.getImage());
             }
+        }else if(button.getIcon() instanceof RetinaIcon){
+            lblDisabledGenerator.setIcon(button.getIcon());
+            ImageIcon disIcon = (ImageIcon) lblDisabledGenerator.getDisabledIcon();
+            return new RetinaIcon(disIcon.getImage());
         }
         return null;
     }
