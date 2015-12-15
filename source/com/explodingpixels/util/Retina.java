@@ -92,7 +92,7 @@ public class Retina {
 
     public static Icon createDisabledIcon(AbstractButton button) {
         Image img = ((ImageIcon) button.getIcon()).getImage();
-        if (img instanceof MultiResolutionImage) {
+        if (retina && img instanceof MultiResolutionImage) {
             int w = button.getIcon().getIconWidth() * 2;
             int h = button.getIcon().getIconHeight() * 2;
             Image retinaImage = ((MultiResolutionImage) img).getResolutionVariant(w, h);
