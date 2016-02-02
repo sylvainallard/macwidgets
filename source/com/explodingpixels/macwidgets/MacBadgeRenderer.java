@@ -114,7 +114,7 @@ public class MacBadgeRenderer {
                     : getUnselectedBadgeColor(WindowUtils.isParentWindowFocused(this)));
 
             // draw the badge.
-            g2d.fillRoundRect(0, 0, getWidth(), getHeight(), getHeight(), getHeight());
+            g2d.fillRoundRect(0, 0, getWidth(), getHeight()-4, getHeight()-4, getHeight()-4);
 
             // set the color to use for the text - note this color is always
             // the same, though it won't always show because of the composite
@@ -135,11 +135,11 @@ public class MacBadgeRenderer {
             int y = getHeight() / 2 - visualBounds.height / 2 - visualBounds.y;
 
             // draw the badge text.
-            g2d.drawString(getText(), x, y);
+            g2d.drawString(getText(), x, y-2);
 
             Retina.scaleDownGraphics2D((Graphics2D) g);
             // draw the image into this component.
-            g.drawImage(image, 0, 0, null);
+            g.drawImage(image, 0, 0+2, null);
 
             // dispose of the buffered image graphics.
             g2d.dispose();

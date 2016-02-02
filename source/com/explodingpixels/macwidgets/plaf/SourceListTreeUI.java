@@ -125,7 +125,7 @@ public class SourceListTreeUI extends BasicTreeUI {
         tree.setRootVisible(false);
         tree.setShowsRootHandles(true);
         // TODO key height off font size.
-        tree.setRowHeight(20);
+        tree.setRowHeight(28);
 
         // install the default color scheme.
         setColorScheme(new SourceListStandardColorScheme());
@@ -222,7 +222,7 @@ public class SourceListTreeUI extends BasicTreeUI {
         // install the collapsed and expanded icons as well as the margins to indent nodes.
         setCollapsedIcon(fColorScheme.getUnselectedCollapsedIcon());
         setExpandedIcon(fColorScheme.getUnselectedExpandedIcon());
-        int indent = fColorScheme.getUnselectedCollapsedIcon().getIconWidth() / 2 + 4;
+        int indent = fColorScheme.getUnselectedCollapsedIcon().getIconWidth() / 2 ;
         setLeftChildIndent(indent);
         setRightChildIndent(indent);
     }
@@ -243,7 +243,10 @@ public class SourceListTreeUI extends BasicTreeUI {
                 ((DefaultMutableTreeNode) path.getLastPathComponent()).getUserObject();
         boolean setIcon = !(categoryOrItem instanceof SourceListCategory)
                 || ((SourceListCategory) categoryOrItem).isCollapsable();
-
+        
+        if((categoryOrItem instanceof SourceListCategory)){
+            setIcon = false;
+        }
         setExpandedIcon(setIcon ? expandIcon : null);
         setCollapsedIcon(setIcon ? collapseIcon : null);
 
@@ -469,7 +472,7 @@ public class SourceListTreeUI extends BasicTreeUI {
                 boolean hasFocus) {
             fLabel.setFont(getCategoryFont());
             TreeNode node = (TreeNode) value;
-            fLabel.setText(getTextForNode(node, selected, expanded, leaf, row, hasFocus).toUpperCase());
+            fLabel.setText(getTextForNode(node, selected, expanded, leaf, row, hasFocus));//
             return fLabel;
         }
     }

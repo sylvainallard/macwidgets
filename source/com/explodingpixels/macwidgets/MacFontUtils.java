@@ -9,7 +9,7 @@ import javax.swing.UIManager;
 public class MacFontUtils {
 
     public static final float DEFAULT_FONT_SIZE = 11.0f;
-    
+    public static final float DEFAULT_SMALL_FONT_SIZE = 11.0f;
     public static final float HUD_FONT_SIZE = 11.0f;
  	
 	public static final Font DEFAULT_FONT = new Font("Serif", Font.PLAIN, 11); 
@@ -33,7 +33,7 @@ public class MacFontUtils {
     		UIManager.getFont("Label.font") != null ? UIManager.getFont("Label.font").deriveFont(DEFAULT_FONT_SIZE) : DEFAULT_FONT.deriveFont(DEFAULT_FONT_SIZE);
 
     public static final Font BOLD_LABEL_FONT =
-    	    UIManager.getFont("Label.font") != null ? UIManager.getFont("Label.font").deriveFont(DEFAULT_FONT_SIZE) : DEFAULT_FONT.deriveFont(Font.BOLD, DEFAULT_FONT_SIZE);
+    	    UIManager.getFont("Label.font") != null ? UIManager.getFont("Label.font").deriveFont(Font.BOLD, DEFAULT_SMALL_FONT_SIZE) : DEFAULT_FONT.deriveFont(Font.BOLD, DEFAULT_FONT_SIZE);
     		
     		
     public static void enableAntialiasing(Graphics2D g2) {

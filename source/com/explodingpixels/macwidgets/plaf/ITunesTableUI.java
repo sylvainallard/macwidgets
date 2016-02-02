@@ -40,7 +40,7 @@ import com.explodingpixels.widgets.WindowUtils;
 public class ITunesTableUI extends BasicTableUI {
 
 //	protected static final Color EVEN_ROW_COLOR = new Color(241, 245, 250);
-        protected static final Color EVEN_ROW_COLOR = new Color(241, 244, 247);
+        protected static final Color EVEN_ROW_COLOR = new Color(245, 245, 245);
 	protected static final Color TABLE_GRID_COLOR = new Color(0xd9d9d9);
 	protected static final Color SELECTION_ACTIVE_SELECTION_FOREGROUND_COLOR = Color.WHITE;
 //	protected static final Color SELECTION_ACTIVE_SELECTION_BACKGROUND_COLOR = new Color(
@@ -48,7 +48,7 @@ public class ITunesTableUI extends BasicTableUI {
 //	protected static final Color SELECTION_INACTIVE_SELECTION_FOREGROUND_COLOR = Color.BLACK;
         
         protected static final Color SELECTION_ACTIVE_SELECTION_BACKGROUND_COLOR = new Color(
-			17,133,247);
+			15,122,253);
 	protected static final Color SELECTION_INACTIVE_SELECTION_FOREGROUND_COLOR = Color.BLACK;
         
 //	protected static final Color SELECTION_INACTIVE_SELECTION_BACKGROUND_COLOR = new Color(
@@ -61,7 +61,7 @@ public class ITunesTableUI extends BasicTableUI {
 //			224, 224, 224);
         
         protected static final Color SELECTION_ACTIVE_BOTTOM_BORDER_COLOR = new Color(
-			17,133,247);
+			15,122,253);
 	protected static final Color SELECTION_INACTIVE_BOTTOM_BORDER_COLOR = new Color(
 			220, 220, 220);
         
