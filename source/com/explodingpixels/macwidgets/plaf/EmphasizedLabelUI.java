@@ -37,7 +37,7 @@ public class EmphasizedLabelUI extends BasicLabelUI {
     private Color fUnfocusedTextColor;
 
     public static final Color DEFAULT_EMPHASIS_COLOR = new Color(255, 255, 255, 110);
-    public static final Color DEFAULT_FOCUSED_FONT_COLOR = new Color(0x000000);
+    public static final Color DEFAULT_FOCUSED_FONT_COLOR = new Color(68,68,68);//new Color(0x000000);
     public static final Color DEFAULT_UNFOCUSED_FONT_COLOR = new Color(0x3f3f3f);
     public static final Color DEFAULT_DISABLED_FONT_COLOR = new Color(0x3f3f3f);
 
