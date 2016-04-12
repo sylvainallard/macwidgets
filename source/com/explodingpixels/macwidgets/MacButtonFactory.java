@@ -18,6 +18,7 @@ import com.explodingpixels.painter.CompoundPainter;
 import com.explodingpixels.painter.MacWidgetsPainter;
 import com.explodingpixels.painter.RectanglePainter;
 import com.explodingpixels.swingx.EPButton;
+import com.explodingpixels.util.PlatformUtils;
 import com.explodingpixels.util.Retina;
 import com.explodingpixels.util.RetinaIcon;
 import com.explodingpixels.widgets.PopdownButton;
@@ -52,6 +53,7 @@ public class MacButtonFactory {
 //    static final ImagePainter GRADIENT_BUTTON_IMAGE_PAINTER =
 //            new ImagePainter(GRADIENT_BACKGROUND_URL);
     static final RectanglePainter GRADIENT_BUTTON_IMAGE_PAINTER = new RectanglePainter(Color.decode("#f2f2f2"));
+    static final RectanglePainter WIN_GRADIENT_BUTTON_IMAGE_PAINTER = new RectanglePainter(Color.WHITE);
     private static final MacWidgetsPainter<Component> PRESSED_AND_SELECTED_GRADIENT_PAINTER
             = new CompoundPainter<Component>(GRADIENT_BUTTON_IMAGE_PAINTER,
                     new RectanglePainter(new Color(0, 0, 0, 89)));
@@ -60,6 +62,12 @@ public class MacButtonFactory {
             = new ButtonStatePainter<AbstractButton>(
                     GRADIENT_BUTTON_IMAGE_PAINTER,
                     GRADIENT_BUTTON_IMAGE_PAINTER,
+                    PRESSED_AND_SELECTED_GRADIENT_PAINTER,
+                    PRESSED_AND_SELECTED_GRADIENT_PAINTER);
+    private static final ButtonStatePainter<AbstractButton> WIN_GRADIENT_BUTTON_PAINTER
+            = new ButtonStatePainter<AbstractButton>(
+                    WIN_GRADIENT_BUTTON_IMAGE_PAINTER,
+                    WIN_GRADIENT_BUTTON_IMAGE_PAINTER,
                     PRESSED_AND_SELECTED_GRADIENT_PAINTER,
                     PRESSED_AND_SELECTED_GRADIENT_PAINTER);
 
@@ -91,8 +99,11 @@ public class MacButtonFactory {
 
         EPButton button = new EPButton(icon);
         button.addActionListener(actionListener);
-
-        button.setBackgroundPainter(GRADIENT_BUTTON_PAINTER);
+        if(PlatformUtils.isMac()){
+            button.setBackgroundPainter(GRADIENT_BUTTON_PAINTER);
+        }else{
+            button.setBackgroundPainter(WIN_GRADIENT_BUTTON_PAINTER);
+        }
         initGradientButton(button);
         button.setPressedIcon(icon);
 

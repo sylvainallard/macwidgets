@@ -8,6 +8,7 @@ import javax.swing.Icon;
 import com.explodingpixels.macwidgets.plaf.EmphasizedLabelUI;
 import com.explodingpixels.painter.GradientWithBorderPainter;
 import com.explodingpixels.painter.MacWidgetsPainter;
+import com.explodingpixels.util.PlatformUtils;
 
 /**
  * A {@link SourceListColorScheme} that provides {@link com.explodingpixels.painter.MacWidgetsPainter}s and colors to render a standard
@@ -31,6 +32,7 @@ public class SourceListStandardColorScheme implements SourceListColorScheme {
 
     private static Color ACTIVE_BACKGROUND_COLOR = new Color(240,240,240);//Color(0xd6dde5);
     private static Color INACTIVE_BACKGROUND_COLOR = new Color(248,248,248);//Color(0xe8e8e8);
+    private static Color WIN_BACKGROUND_COLOR = Color.WHITE;
 
     private static final Color CATEGORY_FONT_COLOR = new Color(154,154,154);//new Color(0x606e80);
     private static final Color CATEGORY_FONT_SHADOW_COLOR = EmphasizedLabelUI.DEFAULT_EMPHASIS_COLOR;
@@ -84,11 +86,19 @@ public class SourceListStandardColorScheme implements SourceListColorScheme {
     }
 
     public Color getActiveBackgroundColor() {
-        return ACTIVE_BACKGROUND_COLOR;
+        if(PlatformUtils.isMac()){
+            return ACTIVE_BACKGROUND_COLOR;
+        }else{
+            return WIN_BACKGROUND_COLOR;
+        }
     }
 
     public Color getInactiveBackgroundColor() {
-        return INACTIVE_BACKGROUND_COLOR;
+        if(PlatformUtils.isMac()){
+            return INACTIVE_BACKGROUND_COLOR;
+        }else{
+            return WIN_BACKGROUND_COLOR;
+        }
     }
 
     public Icon getUnselectedCollapsedIcon() {
