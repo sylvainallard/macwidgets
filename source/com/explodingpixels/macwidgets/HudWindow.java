@@ -293,12 +293,12 @@ public class HudWindow {
                         0, 0, getWidth(), getHeight(), ROUNDED_RECT_DIAMETER, ROUNDED_RECT_DIAMETER)));
                 titleArea.subtract(new Area(new Rectangle(0, midPointY, getWidth(), midPointY)));
                 // draw the top half of the title bar (the shine).
-                graphics2d.fill(titleArea);
+                //graphics2d.fill(titleArea);
                 // 2. The bottom half -----------------------------------------------------------//
                 // draw the bottom half of the title bar.
                 int bottomHeight = getHeight() - midPointY;
                 graphics2d.setColor(BOTTOM_BACKGROUND);
-                graphics2d.fillRect(0, midPointY, getWidth(), bottomHeight);
+                //graphics2d.fillRect(0, midPointY, getWidth(), bottomHeight);
             } else {
                 // create an area that has rounded corners at the top and square corners at the
                 // bottom.
@@ -307,9 +307,9 @@ public class HudWindow {
                         0, 0, getWidth(), getHeight(), ROUNDED_RECT_DIAMETER, ROUNDED_RECT_DIAMETER)));
                 titleArea.subtract(new Area(
                         new Rectangle(0, midPointY, getWidth(), midPointY)));
-                graphics2d.fill(titleArea);
-                graphics2d.setColor(HIGHLIGHT);
-                graphics2d.drawLine(0, getHeight() - 1, getWidth(), getHeight() - 1);
+                //graphics2d.fill(titleArea);
+                //graphics2d.setColor(HIGHLIGHT);
+                //graphics2d.drawLine(0, getHeight() - 1, getWidth(), getHeight() - 1);
             }
 
             graphics2d.dispose();
