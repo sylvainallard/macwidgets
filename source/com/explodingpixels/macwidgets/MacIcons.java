@@ -5,13 +5,16 @@ import javax.swing.ImageIcon;
 public class MacIcons {
 
     public final static ImageIcon PLUS
-            = new ImageIcon(MacIcons.class.getResource("/com/explodingpixels/macwidgets/images/plus.png"));
+            = new ImageIcon(MacIcons.class.getResource("/com/explodingpixels/macwidgets/images/add.png"));
 
     public final static ImageIcon MINUS
-            = new ImageIcon(MacIcons.class.getResource("/com/explodingpixels/macwidgets/images/minus.png"));
+            = new ImageIcon(MacIcons.class.getResource("/com/explodingpixels/macwidgets/images/delete.png"));
 
     public final static ImageIcon GEAR
             = new ImageIcon(MacIcons.class.getResource("/com/explodingpixels/macwidgets/images/gear.png"));
+    
+    public final static ImageIcon DELETE
+            = new ImageIcon(MacIcons.class.getResource("/com/explodingpixels/macwidgets/images/delete.png"));
 
     public final static ImageIcon SPLITTER_HANDLE
             = new ImageIcon(MacIcons.class.getResource(
