@@ -37,6 +37,7 @@ public class UnifiedToolbarButtonUI extends BasicButtonUI {
         b.setFocusable(false);
         // TODO make the font derivation more robust.
         b.setFont(MacFontUtils.DEFAULT_BUTTON_FONT);
+        this.setIcons(b.getPressedIcon(), b.getRolloverIcon(), b.getRolloverSelectedIcon(), b.getSelectedIcon());
     }
 
     @Override
