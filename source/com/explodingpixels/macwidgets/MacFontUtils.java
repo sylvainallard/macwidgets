@@ -8,11 +8,11 @@ import javax.swing.UIManager;
 
 public class MacFontUtils {
 
-    public static final float DEFAULT_FONT_SIZE = 11.0f;
-    public static final float DEFAULT_SMALL_FONT_SIZE = 11.0f;
-    public static final float HUD_FONT_SIZE = 11.0f;
+    public static final float DEFAULT_FONT_SIZE = 12.0f;
+    public static final float DEFAULT_SMALL_FONT_SIZE = 12.0f;
+    public static final float HUD_FONT_SIZE = 12.0f;
  	
-	public static final Font DEFAULT_FONT = new Font("Serif", Font.PLAIN, 11); 
+	public static final Font DEFAULT_FONT = new Font("Serif", Font.PLAIN, 12); 
 
     public static final Font ITUNES_FONT =
     		UIManager.getFont("Table.font") != null ? UIManager.getFont("Table.font").deriveFont(DEFAULT_FONT_SIZE) : DEFAULT_FONT.deriveFont(DEFAULT_FONT_SIZE);
