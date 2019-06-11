@@ -41,7 +41,7 @@ public class ITunesTableHeaderRenderer extends JLabel implements TableCellRender
             BorderFactory.createMatteBorder(0, 0, 1, 0, MacColorUtils.LEOPARD_BORDER_COLOR),
             BorderFactory.createCompoundBorder(
                     BorderFactory.createMatteBorder(0, 0, 0, 1, BORDER_COLOR),
-                    BorderFactory.createEmptyBorder(1, 5, 0, 5)));
+                    BorderFactory.createEmptyBorder(3, 5, 3, 5)));
 
     private static final int SORT_ICON_INDENT_PIXELS = 6;
     private static final Color SORT_ICON_COLOR = new Color(0, 0, 0, 175);

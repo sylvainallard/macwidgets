@@ -91,20 +91,20 @@ public class DITunesTableUI {
 				// table.getColumnModel().getColumn(1).setPreferredWidth(100);
 				table.getColumnModel().getColumn(0).setPreferredWidth(75);
 				table.getColumnModel().getColumn(1).setPreferredWidth(50);
-				table.getColumnModel().getColumn(0).setHeaderValue(new Icon() {
-
-					public void paintIcon(Component arg0, Graphics arg1,
-							int arg2, int arg3) {
-					}
-
-					public int getIconWidth() {
-						return 24;
-					}
-
-					public int getIconHeight() {
-						return 24;
-					}
-				});
+//				table.getColumnModel().getColumn(0).setHeaderValue(new Icon() {
+//
+//					public void paintIcon(Component arg0, Graphics arg1,
+//							int arg2, int arg3) {
+//					}
+//
+//					public int getIconWidth() {
+//						return 24;
+//					}
+//
+//					public int getIconHeight() {
+//						return 24;
+//					}
+//				});
 
 				TableUtils.makeSortable(table, createDummySortDelegate());
 
