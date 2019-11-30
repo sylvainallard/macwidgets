@@ -16,7 +16,7 @@ import javax.swing.plaf.basic.BasicRadioButtonUI;
 
 import com.explodingpixels.macwidgets.MacFontUtils;
 import com.explodingpixels.macwidgets.WidgetBaseColors;
-import sun.swing.SwingUtilities2;
+import javax.swing.plaf.basic.BasicGraphicsUtils;
 
 /**
  * Creates a Heads Up Display (HUD) style radio button, similar to that seen in various iApps
@@ -51,7 +51,7 @@ public class HudRadioButtonUI extends BasicRadioButtonUI {
         int mnemonicIndex = button.getDisplayedMnemonicIndex();
 
         g.setColor(button.getForeground());
-        SwingUtilities2.drawStringUnderlineCharAt(button, g, text, mnemonicIndex,
+        BasicGraphicsUtils.drawStringUnderlineCharAt(button, (Graphics2D) g, text, mnemonicIndex,
                 textRect.x + getTextShiftOffset(),
                 textRect.y + fontMetrics.getAscent() + getTextShiftOffset());
     }

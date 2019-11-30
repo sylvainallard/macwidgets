@@ -11,7 +11,6 @@ import javax.swing.plaf.basic.BasicLabelUI;
 
 import com.explodingpixels.macwidgets.MacFontUtils;
 import com.explodingpixels.widgets.WindowUtils;
-import sun.swing.SwingUtilities2;
 
 /**
  * <p>
@@ -83,10 +82,10 @@ public class EmphasizedLabelUI extends BasicLabelUI {
         MacFontUtils.enableAntialiasing((Graphics2D) g);
         g.setColor(fShadowColor);
         g.setFont(label.getFont());
-        SwingUtilities2.drawStringUnderlineCharAt(label, g, s, -1, textX, textY + 1);
+        BasicGraphicsUtils.drawStringUnderlineCharAt(label, (Graphics2D) g, s, -1, textX, textY + 1);
         g.setColor(WindowUtils.isParentWindowFocused(label)
                 ? fFocusedTextColor : fUnfocusedTextColor);
-        SwingUtilities2.drawStringUnderlineCharAt(label, g, s, -1, textX, textY);
+        BasicGraphicsUtils.drawStringUnderlineCharAt(label, (Graphics2D) g, s, -1, textX, textY);
     }
 
     @Override
@@ -95,8 +94,8 @@ public class EmphasizedLabelUI extends BasicLabelUI {
         MacFontUtils.enableAntialiasing((Graphics2D) g);
         g.setColor(fShadowColor);
         g.setFont(label.getFont());
-        SwingUtilities2.drawStringUnderlineCharAt(label, g, s, -1, textX, textY + 1);
+        BasicGraphicsUtils.drawStringUnderlineCharAt(label, (Graphics2D) g, s, -1, textX, textY + 1);
         g.setColor(DEFAULT_DISABLED_FONT_COLOR);
-        SwingUtilities2.drawStringUnderlineCharAt(label, g, s, -1, textX, textY);
+        BasicGraphicsUtils.drawStringUnderlineCharAt(label, (Graphics2D) g, s, -1, textX, textY);
     }
 }

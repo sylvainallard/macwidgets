@@ -21,7 +21,6 @@ import javax.swing.GrayFilter;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import sun.awt.image.MultiResolutionImage;
 
 /**
  *
@@ -92,16 +91,17 @@ public class Retina {
 
     public static Icon createDisabledIcon(AbstractButton button) {
         Image img = ((ImageIcon) button.getIcon()).getImage();
-        if (retina && img instanceof MultiResolutionImage) {
-            int w = button.getIcon().getIconWidth() * 2;
-            int h = button.getIcon().getIconHeight() * 2;
-            Image retinaImage = ((MultiResolutionImage) img).getResolutionVariant(w, h);
-            if (retinaImage != null) {
-                lblDisabledGenerator.setIcon(new ImageIcon(retinaImage));
-                ImageIcon disIcon = (ImageIcon) lblDisabledGenerator.getDisabledIcon();
-                return new RetinaIcon(disIcon.getImage());
-            }
-        }else if(button.getIcon() instanceof RetinaIcon){
+//        if (retina && img instanceof MultiResolutionImage) {
+//            int w = button.getIcon().getIconWidth() * 2;
+//            int h = button.getIcon().getIconHeight() * 2;
+//            Image retinaImage = ((MultiResolutionImage) img).getResolutionVariant(w, h);
+//            if (retinaImage != null) {
+//                lblDisabledGenerator.setIcon(new ImageIcon(retinaImage));
+//                ImageIcon disIcon = (ImageIcon) lblDisabledGenerator.getDisabledIcon();
+//                return new RetinaIcon(disIcon.getImage());
+//            }
+//        }else 
+        if(button.getIcon() instanceof RetinaIcon){
             lblDisabledGenerator.setIcon(button.getIcon());
             ImageIcon disIcon = (ImageIcon) lblDisabledGenerator.getDisabledIcon();
             return new RetinaIcon(disIcon.getImage());
