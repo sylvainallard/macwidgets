@@ -12,6 +12,7 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.Transparency;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.awt.image.FilteredImageSource;
 import java.awt.image.ImageProducer;
@@ -30,9 +31,19 @@ import javax.swing.JLabel;
 public class Retina {
 
     private static boolean retina = testRetinaDisplay();
+    private static double scaleX = 1.0;
+    private static double scaleY = 1.0;
 
     public static boolean hasRetinaDisplay() {
         return retina;
+    }
+    
+    public static double getRetinaScaleX(){
+        return scaleX;
+    }
+    
+    public static double getRetinaScaleY(){
+        return scaleY;
     }
 
     public static BufferedImage createBufferedImage(int w, int h, boolean alpha) {
@@ -40,8 +51,8 @@ public class Retina {
         GraphicsDevice gs = ge.getDefaultScreenDevice();
         GraphicsConfiguration gc = gs.getDefaultConfiguration();
         if (retina) {
-            w *= 2;
-            h *= 2;
+            w *= scaleX;
+            h *= scaleY;
         }
         // Create an image that does not support transparency
         return gc.createCompatibleImage(w, h, alpha ? Transparency.TRANSLUCENT : Transparency.OPAQUE);
@@ -49,28 +60,24 @@ public class Retina {
 
     public static void scaleUpGraphics2D(Graphics2D g2d) {
         if (retina) {
-            g2d.scale(2, 2);
+            g2d.scale(scaleX, scaleX);
         }
     }
 
     public static void scaleDownGraphics2D(Graphics2D g2d) {
         if (retina) {
-            g2d.scale(0.5, 0.5);
+            g2d.scale(1.0/scaleX, 1.0/scaleY);
         }
     }
 
     private static boolean testRetinaDisplay() {
         boolean isRetina = false;
-        GraphicsDevice graphicsDevice = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         try {
-            Field field = graphicsDevice.getClass().getDeclaredField("scale");
-            if (field != null) {
-                field.setAccessible(true);
-                Object scale = field.get(graphicsDevice);
-                if (scale instanceof Integer && ((Integer) scale) == 2) {
-                    isRetina = true;
-                }
-            }
+            final GraphicsConfiguration gfxConfig = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
+            final AffineTransform transform = gfxConfig.getDefaultTransform();
+            scaleX = transform.getScaleX();
+            scaleY = transform.getScaleY();
+            isRetina = !transform.isIdentity();
         } catch (Exception e) {
         }
         return isRetina;
@@ -93,8 +100,8 @@ public class Retina {
     public static Icon createDisabledIcon(AbstractButton button) {
         Image img = ((ImageIcon) button.getIcon()).getImage();
         if (retina && img instanceof MultiResolutionImage) {
-            int w = button.getIcon().getIconWidth() * 2;
-            int h = button.getIcon().getIconHeight() * 2;
+            int w = (int)(button.getIcon().getIconWidth() * scaleX);
+            int h = (int)(button.getIcon().getIconHeight() * scaleY);
             Image retinaImage = ((MultiResolutionImage) img).getResolutionVariant(w, h);
             if (retinaImage != null) {
                 lblDisabledGenerator.setIcon(new ImageIcon(retinaImage));

@@ -26,7 +26,7 @@ public class RetinaIcon extends ImageIcon {
 
     public int getIconWidth() {
         if (Retina.hasRetinaDisplay()) {
-            return super.getIconWidth() / 2;
+            return (int)(super.getIconWidth() / Retina.getRetinaScaleX());
         }
         return super.getIconWidth();
     }
@@ -38,7 +38,7 @@ public class RetinaIcon extends ImageIcon {
      */
     public int getIconHeight() {
         if (Retina.hasRetinaDisplay()) {
-            return super.getIconHeight() / 2;
+            return (int)(super.getIconHeight() / Retina.getRetinaScaleY());
         }
         return super.getIconHeight();
     }
@@ -47,7 +47,7 @@ public class RetinaIcon extends ImageIcon {
         if (Retina.hasRetinaDisplay()) {
             Graphics2D g2 = (Graphics2D) g.create();
             Retina.scaleDownGraphics2D(g2);
-            super.paintIcon(c, g2, x * 2, y * 2);
+            super.paintIcon(c, g2, (int)(x * Retina.getRetinaScaleX()), (int)(y * Retina.getRetinaScaleY()));
             g2.dispose();
         } else {
             super.paintIcon(c, g, x, y);
