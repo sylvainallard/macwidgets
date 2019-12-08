@@ -31,19 +31,27 @@ import javax.swing.JLabel;
 public class Retina {
 
     private static boolean retina = testRetinaDisplay();
-    private static double scaleX = 1.0;
-    private static double scaleY = 1.0;
+    private static double scaleX = -1;
+    private static double scaleY = -1;
 
     public static boolean hasRetinaDisplay() {
         return retina;
     }
     
     public static double getRetinaScaleX(){
-        return scaleX;
+        if(scaleX == -1)
+        {
+            testRetinaDisplay();
+        }
+        return scaleX == -1 ? 1 : scaleX;
     }
     
     public static double getRetinaScaleY(){
-        return scaleY;
+        if(scaleY == -1)
+        {
+            testRetinaDisplay();
+        }
+        return scaleY == -1 ? 1 : scaleY;
     }
 
     public static BufferedImage createBufferedImage(int w, int h, boolean alpha) {
@@ -51,8 +59,8 @@ public class Retina {
         GraphicsDevice gs = ge.getDefaultScreenDevice();
         GraphicsConfiguration gc = gs.getDefaultConfiguration();
         if (retina) {
-            w *= scaleX;
-            h *= scaleY;
+            w *= getRetinaScaleX();
+            h *= getRetinaScaleY();
         }
         // Create an image that does not support transparency
         return gc.createCompatibleImage(w, h, alpha ? Transparency.TRANSLUCENT : Transparency.OPAQUE);
@@ -60,13 +68,13 @@ public class Retina {
 
     public static void scaleUpGraphics2D(Graphics2D g2d) {
         if (retina) {
-            g2d.scale(scaleX, scaleX);
+            g2d.scale(getRetinaScaleX(), getRetinaScaleY());
         }
     }
 
     public static void scaleDownGraphics2D(Graphics2D g2d) {
         if (retina) {
-            g2d.scale(1.0/scaleX, 1.0/scaleY);
+            g2d.scale(1.0/getRetinaScaleX(), 1.0/getRetinaScaleY());
         }
     }
 
@@ -79,6 +87,7 @@ public class Retina {
             scaleY = transform.getScaleY();
             isRetina = !transform.isIdentity();
         } catch (Exception e) {
+            System.err.println("Retina check failed:" + e);
         }
         return isRetina;
     }
@@ -100,8 +109,8 @@ public class Retina {
     public static Icon createDisabledIcon(AbstractButton button) {
         Image img = ((ImageIcon) button.getIcon()).getImage();
         if (retina && img instanceof MultiResolutionImage) {
-            int w = (int)(button.getIcon().getIconWidth() * scaleX);
-            int h = (int)(button.getIcon().getIconHeight() * scaleY);
+            int w = (int)(button.getIcon().getIconWidth() * getRetinaScaleX());
+            int h = (int)(button.getIcon().getIconHeight() * getRetinaScaleY());
             Image retinaImage = ((MultiResolutionImage) img).getResolutionVariant(w, h);
             if (retinaImage != null) {
                 lblDisabledGenerator.setIcon(new ImageIcon(retinaImage));
