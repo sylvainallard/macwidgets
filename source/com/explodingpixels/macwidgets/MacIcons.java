@@ -24,23 +24,27 @@ public class MacIcons {
     public static final ImageIcon COLLAPSED_WHITE =       readBundledIcon("nav_right_white", "macwidgets");
     public static final ImageIcon EXPANDED =              readBundledIcon("nav_down", "macwidgets");
     public static final ImageIcon EXPANDED_WHITE =        readBundledIcon("nav_down_white", "macwidgets");
-    public static final ImageIcon WIDGET_CLOSE =          readBundledIcon("close", "widget");
-    public static final ImageIcon WIDGET_CLOSE_OVER =     readBundledIcon("close_over", "widget");
-    public static final ImageIcon WIDGET_CLOSE_PRESSED =  readBundledIcon("close_pressed", "widget");
-    public static final ImageIcon WIDGET_CLOSE_UNSELECTED=readBundledIcon("close_unselected", "widget");
+    public static final ImageIcon WIDGET_CLOSE =          readBundledIcon("close", "widgets");
+    public static final ImageIcon WIDGET_CLOSE_OVER =     readBundledIcon("close_over", "widgets");
+    public static final ImageIcon WIDGET_CLOSE_PRESSED =  readBundledIcon("close_pressed", "widgets");
+    public static final ImageIcon WIDGET_CLOSE_UNSELECTED=readBundledIcon("close_unselected", "widgets");
   
    
    private static final ImageIcon readBundledIcon(String imageName, String bundle) {
        List<Image> imgList = new ArrayList<Image>();
        try {
-        imgList.add(ImageIO.read(MacIcons.class.getResource("/com/explodingpixels/"+bundle+"/images/"+imageName+".png")));
-        URL url2x = MacIcons.class.getResource("/com/explodingpixels/"+bundle+"/images/"+imageName+"@2x.png");
-        if(url2x != null) {
-            imgList.add(ImageIO.read(url2x));
-        }
-        return new ImageIcon(new BaseMultiResolutionImage(imgList.toArray(new Image[0]))); 
+            imgList.add(ImageIO.read(MacIcons.class.getResource("/com/explodingpixels/"+bundle+"/images/"+imageName+".png")));
+            try{
+                URL url2x = MacIcons.class.getResource("/com/explodingpixels/"+bundle+"/images/"+imageName+"@2x.png");
+                if(url2x != null) {
+                    imgList.add(ImageIO.read(url2x));
+                }
+            }catch(Exception e) {
+                    //missing 2x
+            }
+            return new ImageIcon(new BaseMultiResolutionImage(imgList.toArray(new Image[0])));
        }catch(Exception e) {
-           System.err.println("MacIcons missing" + imageName);
+           System.err.println("MacIcons missing: " + imageName);
            return null;
        }
        
