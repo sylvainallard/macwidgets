@@ -420,12 +420,14 @@ public class SourceListTreeUI extends BasicTreeUI {
 
         public void treeNodesInserted(TreeModelEvent e) {
             TreePath path = e.getTreePath();
-            Object root = tree.getModel().getRoot();
-            TreePath pathToRoot = new TreePath(root);
-            if (path != null && path.getParentPath() != null
-                    && path.getParentPath().getLastPathComponent().equals(root)
-                    && !tree.isExpanded(pathToRoot)) {
-                TreeUtils.expandPathOnEdt(tree, new TreePath(root));
+            if(tree != null) {
+                Object root = tree.getModel().getRoot();
+                TreePath pathToRoot = new TreePath(root);
+                if (path != null && path.getParentPath() != null
+                        && path.getParentPath().getLastPathComponent().equals(root)
+                        && !tree.isExpanded(pathToRoot)) {
+                    TreeUtils.expandPathOnEdt(tree, new TreePath(root));
+                }
             }
         }
 
