@@ -124,11 +124,15 @@ public class ITunesTableUI extends BasicTableUI {
 	private WindowFocusListener createWindowFocusListener() {
 		return new WindowFocusListener() {
 			public void windowGainedFocus(WindowEvent e) {
-				makeTableActive();
+				if(table != null) {
+					makeTableActive();
+				}
 			}
 
 			public void windowLostFocus(WindowEvent e) {
-				makeTableInactive();
+				if(table != null) {
+					makeTableInactive();
+				}
 			}
 		};
 	}
