@@ -70,7 +70,7 @@ public class HudPaintingUtils {
      * @return the font used by HUD style widgets.
      */
     public static Font getHudFont() {
-        return MacFontUtils.HUD_BUTTON_FONT;
+        return MacFontUtils.getFont();
     }
 
     /**

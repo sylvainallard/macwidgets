@@ -78,7 +78,7 @@ public class ITunesTableUI extends BasicTableUI {
 		// TODO save defaults.
 
 		table.setOpaque(false);
-		table.setFont(MacFontUtils.ITUNES_FONT);
+		table.setFont(MacFontUtils.getFont());
 		table.setGridColor(TABLE_GRID_COLOR);
 		table.setIntercellSpacing(new Dimension(0, 0));
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -116,7 +116,7 @@ public class ITunesTableUI extends BasicTableUI {
 
 	private TableCellEditor createDefaultTableCellEditor() {
 		JTextField textField = new JTextField();
-		textField.setFont(MacFontUtils.ITUNES_FONT);
+		textField.setFont(MacFontUtils.getFont());
 		textField.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		return new DefaultCellEditor(textField);
 	}

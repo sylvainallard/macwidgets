@@ -111,7 +111,7 @@ public class LabeledComponentGroup {
 
     private JLabel createLabel(String labelString) {
         JLabel label = MacWidgetFactory.makeEmphasizedLabel(new JLabel(labelString));
-        label.setFont(MacFontUtils.TOOLBAR_LABEL_FONT);
+        label.setFont(MacFontUtils.getFont());
         return label;
     }
 }

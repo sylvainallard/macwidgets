@@ -98,10 +98,6 @@ import javax.swing.SwingUtilities;
  */
 public class SourceListTreeUI extends BasicTreeUI {
 
-    private Font categoryFont = MacFontUtils.BOLD_LABEL_FONT;
-    private Font itemFont = MacFontUtils.DEFAULT_LABEL_FONT;
-    private Font itemSelectedFont = itemFont.deriveFont(Font.BOLD);
-
     private static final Color TRANSPARENT_COLOR = new Color(0, 0, 0, 0);
 
     private final String SELECT_NEXT = "selectNext";
@@ -132,27 +128,15 @@ public class SourceListTreeUI extends BasicTreeUI {
     }
 
     public Font getCategoryFont() {
-		return categoryFont;
-	}
-    
-    public void setCategoryFont(Font categoryFont) {
-		this.categoryFont = categoryFont;
+		return MacFontUtils.getFontBold();
 	}
     
     public Font getItemFont() {
-		return itemFont;
-	}
-    
-    public void setItemFont(Font itemFont) {
-		this.itemFont = itemFont;
+		return MacFontUtils.getFont();
 	}
     
     public Font getItemSelectedFont() {
-		return itemSelectedFont;
-	}
-    
-    public void setItemSelectedFont(Font itemSelectedFont) {
-		this.itemSelectedFont = itemSelectedFont;
+		return MacFontUtils.getFontBold();
 	}
     
     @Override

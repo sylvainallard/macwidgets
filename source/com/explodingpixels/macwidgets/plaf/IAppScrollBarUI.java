@@ -80,7 +80,7 @@ public class IAppScrollBarUI extends SkinnableScrollBarUI {
         int incrementButtonRecess = IAppScrollBarArtworkUtils.getDecrementButtonRecess();
 
         // FIXME - Hack because some LAFs failed to set default fonts for everything AND Java 7 font behavior changed.
-        decrementButton.setFont(MacFontUtils.DEFAULT_BUTTON_FONT);
+        decrementButton.setFont(MacFontUtils.getFont());
         
         Dimension preferredSize = new Dimension(100, decrementButton.getPreferredSize().height);
 
@@ -98,7 +98,7 @@ public class IAppScrollBarUI extends SkinnableScrollBarUI {
         int incrementButtonRecess = IAppScrollBarArtworkUtils.getDecrementButtonRecess();
 
         // FIXME - Hack because some LAFs failed to set default fonts for everything AND Java 7 font behavior changed.
-        decrementButton.setFont(MacFontUtils.DEFAULT_BUTTON_FONT);
+        decrementButton.setFont(MacFontUtils.getFont());
 
         Dimension preferredSize = new Dimension(decrementButton.getPreferredSize().width, 100);
 
@@ -118,7 +118,7 @@ public class IAppScrollBarUI extends SkinnableScrollBarUI {
         int decrementButtonRecess = IAppScrollBarArtworkUtils.getDecrementButtonRecess();
 
         // FIXME - Hack because some LAFs failed to set default fonts for everything AND Java 7 font behavior changed.
-        decrementButton.setFont(MacFontUtils.DEFAULT_BUTTON_FONT);
+        decrementButton.setFont(MacFontUtils.getFont());
 
         Dimension preferredSize = new Dimension(100, decrementButton.getPreferredSize().height);
 
@@ -140,7 +140,7 @@ public class IAppScrollBarUI extends SkinnableScrollBarUI {
         int decrementButtonRecess = IAppScrollBarArtworkUtils.getDecrementButtonRecess();
 
         // FIXME - Hack because some LAFs failed to set default fonts for everything AND Java 7 font behavior changed.
-        decrementButton.setFont(MacFontUtils.DEFAULT_BUTTON_FONT);
+        decrementButton.setFont(MacFontUtils.getFont());
 
         Dimension preferredSize = new Dimension(decrementButton.getPreferredSize().width, 100);
 
